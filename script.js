@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/BITIK/sw.js', { scope: '/BITIK/' })
+  navigator.serviceWorker.register('/bitik/sw.js', { scope: '/bitik/' })
     .then((reg) => console.log('Service worker registered:', reg))
     .catch((err) => console.error('Service worker not registered:', err));
 }
