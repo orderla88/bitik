@@ -20,6 +20,7 @@ const PRECACHE_URLS = [
   // Other files
   '/bitik/script.js',
   '/bitik/manifest.webmanifest',
+  ]
 //   // Images:
 //   '/bitik/Assets/Images/library.webp',
 //   '/bitik/Assets/Images/tenge_1.jpg',
