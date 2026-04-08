@@ -68,19 +68,21 @@
 </section>
 
 <script>
-
   const button = document.getElementById("copy");
-    button.addEventListener("click", () => {
+  button.addEventListener("click", () => {
     const textToCopy = button.innerText;
     navigator.clipboard.writeText(textToCopy)
       .then(() => {
-        alert("Copied!");
+        // Instead of alert, update button text
+        button.innerText = "Copied!";
+        setTimeout(() => {
+          button.innerText = textToCopy; // revert after 1.5s
+        }, 1500);
       })
       .catch(err => {
         console.error("Failed to copy text: ", err);
       });
   });
-
 </script>
 </main>
 
