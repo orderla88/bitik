@@ -20,31 +20,32 @@ const PRECACHE_URLS = [
   // Other files
   './script.js',
   './manifest.webmanifest',
+  //Images:
+  './Assets/Images/library.webp',
+  './Assets/Images/tenge_1.jpg',
+  './Assets/Images/tenge_2.jpg',
+  './Assets/Images/matin.png',
+  './Assets/Images/Uyrenu/1shi_yereje.png',
+  './Assets/Images/Uyrenu/2shi_yereje.png',
+  './Assets/Images/Uyrenu/3shi_yereje.png',
+  './Assets/Images/Uyrenu/4shi_yereje.png',
+  './Assets/Images/Uyrenu/dauisti.png',
+  './Assets/Images/Uyrenu/daussiz_dara.png',
+  './Assets/Images/Uyrenu/daussiz_jup.png',
+  './Assets/Images/Uyrenu/qos_dibis.png',
+  './Assets/Images/Uyrenu/jattigu_1.png',
+  './Assets/Images/Uyrenu/jattigu_2.png',
+  './Assets/Images/Uyrenu/salistirma_1.png',
+  './Assets/Images/Uyrenu/salistirma_2.png',
+  './Assets/Images/Uyrenu/layout.png',
+  './Assets/Images/Uyrenu/layout_1.png',
+  './Assets/Images/Uyrenu/layout_2.png',
+  './Assets/Images/Uyrenu/layout_3.png',
 ]
   
 
 
-  // Images:
- //  './Assets/Images/library.webp',
-  // './Assets/Images/tenge_1.jpg',
-  // './Assets/Images/tenge_2.jpg',
-  // './Assets/Images/matin.png',
-  // './Assets/Images/Uyrenu/1shi_yereje.png',
-  // './Assets/Images/Uyrenu/2shi_yereje.png',
-  // './Assets/Images/Uyrenu/3shi_yereje.png',
-  // './Assets/Images/Uyrenu/4shi_yereje.png',
-  // './Assets/Images/Uyrenu/dauisti.png',
-  // './Assets/Images/Uyrenu/daussiz_dara.png',
-  // './Assets/Images/Uyrenu/daussiz_jup.png',
-  // './Assets/Images/Uyrenu/qos_dibis.png',
-  // './Assets/Images/Uyrenu/jattigu_1.png',
-  // './Assets/Images/Uyrenu/jattigu_2.png',
-  // './Assets/Images/Uyrenu/salistirma_1.png',
-  // './Assets/Images/Uyrenu/salistirma_2.png',
-  // './Assets/Images/Uyrenu/layout.png',
-  // './Assets/Images/Uyrenu/layout_1.png',
-  // './Assets/Images/Uyrenu/layout_2.png',
-  // './Assets/Images/Uyrenu/layout_3.png',
+  
 
 //   './Assets/Images/Kultegin/160.jpg',
 //   './Assets/Images/Kultegin/127.jpg',
