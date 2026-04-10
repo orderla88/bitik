@@ -1,5 +1,5 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'app-precache-v1';
+const CACHE_NAME = 'static-cache-v1';
 
 // Precache explicit files (from your list)
 const PRECACHE_URLS = [
@@ -99,22 +99,26 @@ const PRECACHE_URLS = [
 
 // ];
 
+
+
 self.addEventListener('install', event => {
   self.skipWaiting();
 
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE_URLS))
-      .catch(err => {
-        console.error('Precaching failed:', err);
-        throw err;
-      })
+    caches.open(CACHE_NAME).then(cache => {
+      return Promise.all(
+        PRECACHE_URLS.map(url =>
+          cache.add(url).catch(err => {
+            console.error('Failed to cache:', url, err);
+            // Skip this file but continue with others
+          })
+        )
+      );
+    })
   );
 });
 
-
 self.addEventListener('activate', event => {
-  // Remove old caches
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
@@ -130,19 +134,16 @@ self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Only handle requests from the same origin
   if (url.origin !== location.origin) {
     return;
   }
 
-  // For all same-origin requests: try cache first, then network and cache the result
   event.respondWith(
     caches.match(request).then(cachedResponse => {
       if (cachedResponse) {
         return cachedResponse;
       }
       return fetch(request).then(networkResponse => {
-        // Only cache successful GET responses
         if (!networkResponse || networkResponse.status !== 200 || request.method !== 'GET') {
           return networkResponse;
         }
@@ -155,3 +156,64 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
+
+
+
+
+// self.addEventListener('install', event => {
+//   self.skipWaiting();
+
+//   event.waitUntil(
+//     caches.open(CACHE_NAME)
+//       .then(cache => cache.addAll(PRECACHE_URLS))
+//       .catch(err => {
+//         console.error('Precaching failed:', err);
+//         throw err;
+//       })
+//   );
+// });
+
+
+// self.addEventListener('activate', event => {
+//   // Remove old caches
+//   event.waitUntil(
+//     caches.keys().then(keys =>
+//       Promise.all(
+//         keys
+//           .filter(key => key !== CACHE_NAME)
+//           .map(key => caches.delete(key))
+//       )
+//     ).then(() => self.clients.claim())
+//   );
+// });
+
+// self.addEventListener('fetch', event => {
+//   const request = event.request;
+//   const url = new URL(request.url);
+
+//   // Only handle requests from the same origin
+//   if (url.origin !== location.origin) {
+//     return;
+//   }
+
+//   // For all same-origin requests: try cache first, then network and cache the result
+//   event.respondWith(
+//     caches.match(request).then(cachedResponse => {
+//       if (cachedResponse) {
+//         return cachedResponse;
+//       }
+//       return fetch(request).then(networkResponse => {
+//         // Only cache successful GET responses
+//         if (!networkResponse || networkResponse.status !== 200 || request.method !== 'GET') {
+//           return networkResponse;
+//         }
+//         const responseClone = networkResponse.clone();
+//         caches.open(CACHE_NAME).then(cache => {
+//           cache.put(request, responseClone);
+//         });
+//         return networkResponse;
+//       });
+//     })
+//   );
+// });
