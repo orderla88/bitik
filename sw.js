@@ -49,7 +49,7 @@ const PRECACHE_URLS = [
   './Assets/Images/Kultegin/134.jpg',
   './Assets/Images/Kultegin/165.jpg',
   './Assets/Images/Kultegin/137.jpg',
-  './Assets/Images/Kultegin/1648.jpg',
+  './Assets/Images/Kultegin/148.jpg',
   './Assets/Images/Kultegin/153.jpg',
   './Assets/Images/Kultegin/146.jpg',
   './Assets/Images/Kultegin/1109.jpg',
