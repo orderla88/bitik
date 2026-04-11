@@ -106,9 +106,9 @@ const PRECACHE_URLS = [
   './PDF/Atasozi/yenbek.pdf',
   './PDF/Atasozi/yer.pdf',
 
-  './PDF/Jir/patigul mahsatova_2.pdf',
-  './PDF/Jir/patigul mahsatova_3.pdf',
-  './PDF/Jir/patigul mahsatova_4.pdf',
+  './PDF/Jir/patigul_mahsatova_2.pdf',
+  './PDF/Jir/patigul_mahsatova_3.pdf',
+  './PDF/Jir/patigul_mahsatova_4.pdf',
   './PDF/Jir/patigul_mahsatova_1.pdf',
   './PDF/Jir/serik_abil.pdf',
   './PDF/Jir/serik_seytman.pdf',
