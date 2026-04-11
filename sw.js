@@ -1,5 +1,5 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'static-cache-v1';
+const CACHE_NAME = 'static-cache-v2';
 
 // Precache explicit files (from your list)
 const PRECACHE_URLS = [
@@ -134,18 +134,16 @@ const PRECACHE_URLS = [
 
 self.addEventListener('install', event => {
   self.skipWaiting();
-
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return Promise.all(
+    caches.open(CACHE_NAME).then(cache =>
+      Promise.all(
         PRECACHE_URLS.map(url =>
           cache.add(url).catch(err => {
             console.error('Failed to cache:', url, err);
-            // Skip this file but continue with others
           })
         )
-      );
-    })
+      )
+    )
   );
 });
 
@@ -153,38 +151,28 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       )
     ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', event => {
-  const request = event.request;
-  const url = new URL(request.url);
-
-  if (url.origin !== location.origin) {
-    return;
-  }
+  if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(request).then(cachedResponse => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(request).then(networkResponse => {
-        if (!networkResponse || networkResponse.status !== 200 || request.method !== 'GET') {
+    caches.open(CACHE_NAME).then(cache =>
+      cache.match(event.request).then(cachedResponse => {
+        const fetchPromise = fetch(event.request).then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
           return networkResponse;
-        }
-        const responseClone = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(request, responseClone);
-        });
-        return networkResponse;
-      });
-    })
+        }).catch(() => cachedResponse); // fallback to cache if offline
+
+        return cachedResponse || fetchPromise;
+      })
+    )
   );
 });
 
