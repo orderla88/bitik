@@ -92,6 +92,40 @@ const PRECACHE_URLS = [
   './Assets/Images/Qashau/RSGC.jpg',
   './Assets/Images/Qashau/RSSF.jpg',
   './Assets/Images/Qashau/RSSC.jpg',
+// PDF files
+  './PDF/Atasozi/adam_kisi.pdf',
+  './PDF/Atasozi/as_tamaq.pdf',
+  './PDF/Atasozi/ayel_qatin.pdf',
+  './PDF/Atasozi/bilim.pdf',
+  './PDF/Atasozi/birlik.pdf',
+  './PDF/Atasozi/dos_joldas.pdf',
+  './PDF/Atasozi/mal.pdf',
+  './PDF/Atasozi/oner.pdf',
+  './PDF/Atasozi/sauda.pdf',
+  './PDF/Atasozi/til.pdf',
+  './PDF/Atasozi/yenbek.pdf',
+  './PDF/Atasozi/yer.pdf',
+
+  './PDF/Jir/patigul mahsatova_2.pdf',
+  './PDF/Jir/patigul mahsatova_3.pdf',
+  './PDF/Jir/patigul mahsatova_4.pdf',
+  './PDF/Jir/patigul_mahsatova_1.pdf',
+  './PDF/Jir/serik_abil.pdf',
+  './PDF/Jir/serik_seytman.pdf',
+  
+  './PDF/Mongolia/bayan_ulgi.pdf',
+  './PDF/Mongolia/kirispe.pdf',
+  './PDF/Mongolia/mongolia_qazagi.pdf',
+  './PDF/Mongolia/qazaq.pdf',
+  './PDF/Mongolia/qazaq_kiyimi.pdf',
+  './PDF/Mongolia/qazaq_tagami.pdf',
+
+  './PDF/Yertegi/adal_otinshi.pdf',
+  './PDF/Yertegi/bala_jane_qasqir.pdf',
+  './PDF/Yertegi/ip_pen_suyek.pdf',
+  './PDF/Yertegi/kishkentay_tauiq.pdf',
+  './PDF/Yertegi/qiz_jane_sut.pdf',
+  './PDF/Yertegi/sauisqan_jane_sut.pdf',
 ]
 
 
