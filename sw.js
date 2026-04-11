@@ -126,6 +126,8 @@ const PRECACHE_URLS = [
   './PDF/Yertegi/kishkentay_tauiq.pdf',
   './PDF/Yertegi/qiz_jane_sut.pdf',
   './PDF/Yertegi/sauisqan_jane_sut.pdf',
+
+  './PDF/tanbalar_kestesi.pdf',
 ]
 
 
