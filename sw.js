@@ -1,5 +1,5 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'static-cache-v3';
+const CACHE_NAME = 'static-cache-v4';
 
 // Precache explicit files (from your list)
 const PRECACHE_URLS = [
@@ -92,6 +92,7 @@ const PRECACHE_URLS = [
   './Assets/Images/Qashau/RSGC.jpg',
   './Assets/Images/Qashau/RSSF.jpg',
   './Assets/Images/Qashau/RSSC.jpg',
+  './Assets/Images/Qashau/tools_1.jpg',
 // PDF files
   './PDF/Atasozi/adam_kisi.pdf',
   './PDF/Atasozi/as_tamaq.pdf',
