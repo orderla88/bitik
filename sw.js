@@ -1,5 +1,5 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'static-cache-v6';
+const CACHE_NAME = 'static-cache-v7';
 
 // Precache explicit files (from your list)
 const PRECACHE_URLS = [
@@ -117,6 +117,7 @@ const PRECACHE_URLS = [
   './PDF/Mongolia/qazaq.pdf',
   './PDF/Mongolia/qazaq_kiyimi.pdf',
   './PDF/Mongolia/qazaq_tagami.pdf',
+  './PDF/Mongolia/uy.pdf',
 
   './PDF/Yertegi/adal_otinshi.pdf',
   './PDF/Yertegi/bala_jane_qasqir.pdf',
@@ -124,6 +125,7 @@ const PRECACHE_URLS = [
   './PDF/Yertegi/kishkentay_tauiq.pdf',
   './PDF/Yertegi/qiz_jane_sut.pdf',
   './PDF/Yertegi/sauisqan_jane_sut.pdf',
+  './PDF/Yertegi/muyizder.pdf',
 
   './PDF/tanbalar_kestesi.pdf',
 ]
