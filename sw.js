@@ -1,5 +1,5 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'static-cache-v7';
+const CACHE_NAME = 'static-cache-v8';
 
 // Precache explicit files (from your list)
 const PRECACHE_URLS = [
