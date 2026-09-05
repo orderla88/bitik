@@ -1,10 +1,12 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'static-cache-v10';
+const CACHE_NAME = 'static-cache-v11';
 
 // Precache explicit files (from your list)
-const PRECACHE_URLS = [
-  // HTML folder:
+const NETWORK_FIRST_URLS = [
   './index.html',
+  './script.js',
+  './manifest.webmanifest',
+  // HTML folder:
   './HTML/introduction.html',
   './HTML/explanation.html',
   './HTML/read.html',
@@ -17,10 +19,8 @@ const PRECACHE_URLS = [
   './CSS/styles.css',
   './CSS/index.css',
   './CSS/read.css',
-  // Other files
-  './script.js',
-  './manifest.webmanifest',
-  //Images:
+];
+  const CACHE_FIRST_URLS = [
   './Assets/Images/library.webp',
   './Assets/Images/tenge_1.jpg',
   './Assets/Images/tenge_2.jpg',
@@ -43,7 +43,7 @@ const PRECACHE_URLS = [
   './Assets/Images/Uyrenu/layout_2.png',
   './Assets/Images/Uyrenu/layout_3.png',
 
-'./Assets/Images/Kultegin/160.jpg',
+  './Assets/Images/Kultegin/160.jpg',
   './Assets/Images/Kultegin/127.jpg',
   './Assets/Images/Kultegin/132.jpg',
   './Assets/Images/Kultegin/134.jpg',
@@ -93,7 +93,8 @@ const PRECACHE_URLS = [
   './Assets/Images/Qashau/RSSF.jpg',
   './Assets/Images/Qashau/RSSC.jpg',
   './Assets/Images/Qashau/tools_1.jpg',
-// PDF files
+
+  // PDF files
   './PDF/Atasozi/adam_kisi.pdf',
   './PDF/Atasozi/as_tamaq.pdf',
   './PDF/Atasozi/ayel_qatin.pdf',
@@ -131,113 +132,94 @@ const PRECACHE_URLS = [
   './PDF/Yertegi/patshanin_ashui.pdf',
   './PDF/Yertegi/tulki_men_qarga.pdf',
 
-  './PDF/tanbalar_kestesi.pdf',
-  './PDF/similarities_of_jp_kz.pdf',
-]
-
+  './PDF/Turli/tanbalar_kestesi.pdf',
+  './PDF/Turli/similarities_of_jp_kz.pdf',
+];
+const NETWORK_FIRST_FOLDERS = ['/HTML/', '/CSS/'];
+const CACHE_FIRST_FOLDERS = ['/Assets/', '/PDF/'];
+const PRECACHE_URLS = [...NETWORK_FIRST_URLS, ...CACHE_FIRST_URLS];
 
 
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache =>
-      Promise.all(
-        PRECACHE_URLS.map(url =>
-          cache.add(url).catch(err => {
-            console.error('Failed to cache:', url, err);
-          })
-        )
-      )
-    )
+    caches.open(CACHE_NAME).then(async cache => {
+      const existingKeys = await cache.keys();
+      if (existingKeys.length === 0) {
+        // First install → precache everything, but tolerate failures
+        return Promise.allSettled(
+          PRECACHE_URLS.map(url =>
+            cache.add(url)
+          )
+        ).then(results => {
+          results.forEach((result, i) => {
+            if (result.status === 'rejected') {
+              console.error('Failed to cache:', PRECACHE_URLS[i], result.reason);
+              // Continue caching other files
+            }
+          });
+        });
+      }
+      // Otherwise, skip re‑caching
+    })
   );
 });
+
 
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      )
+      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
     ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
 
-  event.respondWith(
-    caches.open(CACHE_NAME).then(cache =>
-      cache.match(event.request).then(cachedResponse => {
-        const fetchPromise = fetch(event.request).then(networkResponse => {
-          if (networkResponse && networkResponse.status === 200) {
-            cache.put(event.request, networkResponse.clone());
-          }
-          return networkResponse;
-        }).catch(() => cachedResponse); // fallback to cache if offline
+  // Decide strategy based on path
+  const path = url.pathname;
 
-        return cachedResponse || fetchPromise;
-      })
-    )
-  );
+  if (
+  NETWORK_FIRST_URLS.some(p => path.endsWith(p)) ||
+  NETWORK_FIRST_FOLDERS.some(folder => path.startsWith(folder))
+) {
+    // Network-first
+    event.respondWith(
+      fetch(event.request).then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200) {
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse.clone()));
+        }
+        return networkResponse;
+      }).catch(() => caches.match(event.request))
+    );
+  } else if  (
+  CACHE_FIRST_URLS.some(p => path.endsWith(p)) ||
+  CACHE_FIRST_FOLDERS.some(folder => path.startsWith(folder))
+) {
+    // Cache-first
+event.respondWith(
+  caches.match(event.request).then(cachedResponse => {
+    const fetchPromise = fetch(event.request).then(networkResponse => {
+      if (networkResponse && networkResponse.status === 200) {
+        caches.open(CACHE_NAME).then(cache =>
+          cache.put(event.request, networkResponse.clone())
+        );
+      }
+      return networkResponse;
+    }).catch(() => cachedResponse);
+
+    // Return cached immediately, update in background
+    return cachedResponse || fetchPromise;
+  })
+);
+  } else {
+    // Default fallback: network-first
+    console.warn('Unhandled request:', path);
+    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+  }
 });
 
 
 
-
-
-// self.addEventListener('install', event => {
-//   self.skipWaiting();
-
-//   event.waitUntil(
-//     caches.open(CACHE_NAME)
-//       .then(cache => cache.addAll(PRECACHE_URLS))
-//       .catch(err => {
-//         console.error('Precaching failed:', err);
-//         throw err;
-//       })
-//   );
-// });
-
-
-// self.addEventListener('activate', event => {
-//   // Remove old caches
-//   event.waitUntil(
-//     caches.keys().then(keys =>
-//       Promise.all(
-//         keys
-//           .filter(key => key !== CACHE_NAME)
-//           .map(key => caches.delete(key))
-//       )
-//     ).then(() => self.clients.claim())
-//   );
-// });
-
-// self.addEventListener('fetch', event => {
-//   const request = event.request;
-//   const url = new URL(request.url);
-
-//   // Only handle requests from the same origin
-//   if (url.origin !== location.origin) {
-//     return;
-//   }
-
-//   // For all same-origin requests: try cache first, then network and cache the result
-//   event.respondWith(
-//     caches.match(request).then(cachedResponse => {
-//       if (cachedResponse) {
-//         return cachedResponse;
-//       }
-//       return fetch(request).then(networkResponse => {
-//         // Only cache successful GET responses
-//         if (!networkResponse || networkResponse.status !== 200 || request.method !== 'GET') {
-//           return networkResponse;
-//         }
-//         const responseClone = networkResponse.clone();
-//         caches.open(CACHE_NAME).then(cache => {
-//           cache.put(request, responseClone);
-//         });
-//         return networkResponse;
-//       });
-//     })
-//   );
-// });
