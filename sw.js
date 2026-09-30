@@ -134,6 +134,7 @@ const NETWORK_FIRST_URLS = [
 
   './PDF/Turli/tanbalar_kestesi.pdf',
   './PDF/Turli/similarities_of_jp_kz.pdf',
+  './PDF/Turli/jazular_jayli.pdf',
 ];
 const NETWORK_FIRST_FOLDERS = ['/HTML/', '/CSS/'];
 const CACHE_FIRST_FOLDERS = ['/Assets/', '/PDF/'];
@@ -172,7 +173,7 @@ self.addEventListener('activate', event => {
       Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
     ).then(() => self.clients.claim())
   );
-});
+}); // Does this code delete CACHE_NAME or files in it? 
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
