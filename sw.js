@@ -133,8 +133,8 @@ const NETWORK_FIRST_URLS = [
   './PDF/Yertegi/tulki_men_qarga.pdf',
 
   './PDF/Turli/tanbalar_kestesi.pdf',
-  './PDF/Turli/similarities_of_jp_kz.pdf',
-  './PDF/Turli/jazular_jayli.pdf',
+  './PDF/Turli/similarities_of_jp_kz_v2.pdf',
+  './PDF/Turli/jazular_jayli_v2.pdf',
 ];
 const NETWORK_FIRST_FOLDERS = ['/HTML/', '/CSS/'];
 const CACHE_FIRST_FOLDERS = ['/Assets/', '/PDF/'];
