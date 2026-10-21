@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // SHARE BUTTON
-
 document.addEventListener("DOMContentLoaded", () => {
     const shareBtn = document.getElementById('shareBtn');
     shareBtn.addEventListener('click', async () => {
