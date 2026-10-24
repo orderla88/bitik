@@ -3,7 +3,7 @@
   
 <head>
     <meta charset="utf-8"> 
-    <meta   name="viewport" 
+    <meta    name="viewport" 
             content="width=device-width initial-scale=1.0"> 
     <link rel="stylesheet" href="CSS/index.css"> 
     <link rel="manifest" href="manifest.webmanifest">
@@ -14,7 +14,79 @@
     <link rel="icon" type="image/png" sizes="32x32" href="Assets/Icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Assets/Icons/favicon-16x16.png">
     <link rel="shortcut icon" href="Assets/Icons/favicon.ico">
-    <title>bitik.asia</title>
+    <title>Bitik</title>
+
+
+<!-- <script>   
+async function handleCredentialResponse(response) {
+  const jwt = response.credential;
+  try {
+    const res = await fetch("https://bitik-test-<hash>.run.app/auth/google", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ credential: jwt })
+    });
+    const data = await res.json();
+    console.log("Login result:", data);
+  } catch (err) {
+    console.error("Login failed:", err);
+  }
+}
+</script> -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Open dialog on button click
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("button.open");
+      if (!btn) return;
+
+      const container = btn.closest("div");
+      const dialog = container?.querySelector("dialog");
+      if (dialog) {
+        dialog.showModal();
+        dialog.scrollTop = 0;
+        // Force reflow before adding "visible" for animation
+        requestAnimationFrame(() => dialog.classList.add("visible"));
+      }
+    });
+
+    // Overlay click closes with animation
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.addEventListener("click", (e) => {
+        const rect = dialog.getBoundingClientRect();
+        const inside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+
+        if (!inside) {
+          dialog.classList.add("closing");
+          dialog.classList.remove("visible");
+          setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove("closing");
+          }, 500); // match CSS transition duration
+        }
+      });
+
+      // Animate built-in close buttons too
+      dialog.querySelectorAll("form[method='dialog'] button").forEach((btn) => {
+        btn.addEventListener("click", (ev) => {
+          ev.preventDefault();
+          dialog.classList.add("closing");
+          dialog.classList.remove("visible");
+          setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove("closing");
+          }, 500);
+        });
+      });
+    });
+  });
+</script>
 
 </head>
   
@@ -28,19 +100,19 @@
 <main>
 
 <div>
-    <a href="HTML/introduction.html">Кіріспе</a>
+  <a href="HTML/introduction.html">Кіріспе</a>
 </div>  
 
 <div>
-    <a href="HTML/explanation.html">Үйрену</a>
+  <a href="HTML/explanation.html">Үйрену</a>
 </div>
 
 <div>
-    <a href="HTML/read.html">Оқу</a>
+  <a href="HTML/read.html">Оқу</a>
 </div>
 
 <div>
-    <a href="HTML/write.html">Жазу</a>
+  <a href="HTML/write.html">Жазу</a>
 </div>
 
 <!-- <div>
@@ -71,23 +143,67 @@
         © 2026 bitik.asia <br>
         All rights reserved. 
     </p>
-    <nav>
-        <button id="installBtn">Орнату</button>
-        <button id="shareBtn">Бөлісу</button>
-    </nav>  
+
+
+<nav>
+   
+    <div id="androidInstallContainer">
+        <button type="button" id="androidInstallBtn">Install</button>
+    </div>
+    
+    <div id="androidTipContainer">
+        <button type="button" id="androidTipBtn" class="open">Android</button>
+        <dialog>
+          <p>Сайттың қосымшасын смартфонға орната аласыз.</p> 
+          <ul class="none">
+            <li><b>KAZ</b>: Браузер мәзірі (⋮) &Rarr; «Қолданбаны орнату» немесе «Басты экранға қосу».</li> 
+            <li><b>RUS</b>: Меню браузера (⋮) &Rarr; «Установить приложение» или «Добавить на главный экран».</li>       
+          </ul> 
+          <form method="dialog">
+            <button>Жабу</button>
+          </form>
+        </dialog>
+    </div>
+
+     <div id="iosTipContainer">
+        <button type="button" id="iosTipBtn" class="open">IOS</button>
+        <dialog>
+          <p>Сайтты смартфонның басты экранына қоса аласыз.</p>
+          <ul>
+            <li><b>KAZ</b>: «Бөлісу» &Rarr; «Басты экранға қосу» &Rarr; «Қосу».</li> 
+            <li><b>RUS</b>: «Поделиться» &Rarr; «На экран "Домой"» &Rarr; «Добавить».</li>
+          </ul> 
+          <form method="dialog">
+            <button>Жабу</button>
+          </form>
+        </dialog>
+    </div>
+        
+    <div id="desktopTipContainer"> 
+        <button type="button" id="desktopTipBtn" class="open">Install</button>
+        <dialog>
+          <p>Сайтты компьютерге орната аласыз.</p>
+          <ul>
+            <li><b>KAZ</b>: Браузердің URL жолағында оң жағынан «Қолданбаны орнату» немесе «Қолданбада ашу» белгішесі бар.</li> 
+            <li><b>RUS</b>: В строке URL браузера с правой стороны есть значок «Установить приложение» или «Открыть в приложении».</li>
+          </ul>
+          <form method="dialog">
+            <button>Жабу</button>
+          </form>
+        </dialog>
+    </div>    
+
+    <div id="shareContainer">
+        <button type="button" id="shareBtn">Share</button>
+    </div>      
+        
+</nav>
+  
 </footer> 
 
 </body> 
   
 </html>
 
-<!--
 
-- Font;
-- Glossary;
-- Translation;
-- PDF link;
-- Videos (4)
-
--->
 

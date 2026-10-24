@@ -6,68 +6,119 @@ if ('serviceWorker' in navigator) {
     .catch((err) => console.error('Service worker not registered:', err));
 }
 
-
-// INSTALL BUTTON
+// INSTALL BUTTON 
 document.addEventListener("DOMContentLoaded", () => {
-  let deferredPrompt;
-  const Btn = document.getElementById('installBtn');
-  // Hide button if already installed (running in standalone mode)
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    Btn.style.display = "none";
-  }
-  // Hide button if user has already handled the prompt before
-  if (localStorage.getItem("pwaHandled")) {
-    Btn.style.display = "none";
-  }
-  // Listen for the beforeinstallprompt event
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    // Only show if not previously handled
-    if (!localStorage.getItem("pwaHandled")) {
-      Btn.style.display = "block";
-    }
-    Btn.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log("User response:", outcome);
-      // Mark as handled (either accepted or dismissed)
-      localStorage.setItem("pwaHandled", "true");
-      deferredPrompt = null;
-      Btn.style.display = "none";
-    });
-  });
-  // Hide button once app is installed
-  window.addEventListener("appinstalled", () => {
-    console.log("PWA installed");
-    localStorage.setItem("pwaHandled", "true");
-    Btn.style.display = "none";
-  });
-});
 
+    const desktopContainer = document.getElementById("desktopTipContainer");
+
+    const iosContainer = document.getElementById("iosTipContainer");
+
+    const androidContainer = document.getElementById("androidTipContainer");
+
+    const androidInstallContainer = document.getElementById("androidInstallContainer");
+
+    const androidInstallBtn = document.getElementById("androidInstallBtn");
+
+    function hideAllInstallButtons() {
+        if (desktopContainer)
+            desktopContainer.style.display = "none";
+
+        if (iosContainer)
+            iosContainer.style.display = "none";
+
+        if (androidContainer)
+            androidContainer.style.display = "none";
+
+        if (androidInstallContainer)
+            androidInstallContainer.style.display = "none";
+    }
+
+    // 1. Detect if already installed
+    const isInstalled =
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true;
+    if (isInstalled) {
+        hideAllInstallButtons();
+        return;
+    }
+
+    const ua = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    // Explicitly target desktop (checking against common mobile identifiers)
+    const isDesktop = !isIOS && !isAndroid;
+
+    // Hide all initially
+    hideAllInstallButtons();
+
+    // 2. Show buttons based on strict device checks
+    if (isIOS && iosContainer) {
+        iosContainer.style.display = "block";
+    } else if (isDesktop && desktopContainer) {
+        desktopContainer.style.display = "block";
+    } else if (isAndroid && androidContainer) {
+        androidContainer.style.display = "block";
+    }
+
+    // 3. Android installation handling
+    let deferredPrompt;
+    if ( 
+        isAndroid &&
+        androidContainer &&
+        androidInstallContainer &&
+        androidInstallBtn
+    ) {
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Hide fallback instructions
+            androidContainer.style.display = "none";
+            // Show real install button
+            androidInstallContainer.style.display = "block";
+        });
+
+        androidInstallBtn.addEventListener("click", async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } =
+                await deferredPrompt.userChoice;
+            console.log("User response:", outcome);
+            if (outcome === "accepted") {
+                androidInstallContainer.style.display = "none";
+            } else {
+                // Restore fallback instructions
+                androidInstallContainer.style.display = "none";
+                androidContainer.style.display = "block";
+            }
+            deferredPrompt = null;
+        });
+
+        window.addEventListener("appinstalled", () => {
+            console.log("PWA installed successfully");
+            hideAllInstallButtons();
+            deferredPrompt = null;
+});
+    }
 
 // SHARE BUTTON
-document.addEventListener("DOMContentLoaded", () => {
-    const shareBtn = document.getElementById('shareBtn');
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
     shareBtn.addEventListener('click', async () => {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: document.title,
-            url: window.location.href
-          });
-          console.log('Shared successfully');
-        } catch (err) {
-          console.error('Error sharing:', err);
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                });
+                console.log('Shared successfully');
+            } catch (err) {
+                console.error('Error sharing:', err);
+            }
+        } else {
+            alert("Web Share API not supported on this browser.");
         }
-      } else {
-        alert("Web Share API not supported on this browser.");
-      }
     });
-  });
+}
 
-
-
-
+ });
 
