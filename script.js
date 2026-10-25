@@ -105,7 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
     shareBtn.addEventListener('click', async () => {
+        console.log("Share button clicked");
+        console.log("navigator.share =", navigator.share);
         if (navigator.share) {
             try {
                 await navigator.share({
@@ -120,7 +123,7 @@ const shareBtn = document.getElementById('shareBtn');
             alert("Web Share API not supported on this browser.");
         }
     });
-
+    }
 });
 
 
