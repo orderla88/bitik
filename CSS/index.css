@@ -134,7 +134,7 @@ nav div {
 
 dialog {
     font-size: 1rem;
-    border: solid #013 thick;
+    border: solid #013 thin;
     border-radius: 0.5rem;
     color: #013;
     opacity: 0;

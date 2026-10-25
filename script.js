@@ -130,4 +130,3 @@ const shareBtn = document.getElementById('shareBtn');
 
 
 
-// Have an issue with share button. It works in website version, but does not respond in PWA
