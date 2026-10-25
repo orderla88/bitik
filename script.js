@@ -99,8 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
             deferredPrompt = null;
 });
     }
+});
 
 // SHARE BUTTON
+
+document.addEventListener("DOMContentLoaded", () => {
 const shareBtn = document.getElementById('shareBtn');
     shareBtn.addEventListener('click', async () => {
         if (navigator.share) {
