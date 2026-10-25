@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // SHARE BUTTON
 const shareBtn = document.getElementById('shareBtn');
-if (shareBtn) {
     shareBtn.addEventListener('click', async () => {
         if (navigator.share) {
             try {
@@ -118,7 +117,11 @@ if (shareBtn) {
             alert("Web Share API not supported on this browser.");
         }
     });
-}
 
- });
+});
 
+
+
+
+
+// Have an issue with share button. It works in website version, but does not respond in PWA
