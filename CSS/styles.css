@@ -96,7 +96,7 @@ sup {
     position: relative;
     vertical-align: baseline;
     top: -0.5em;
-    color: darkred;
+    color: #720000;
 }
 sub {bottom: -0.25rem;}
 
@@ -127,7 +127,7 @@ figcaption {
 
 /*HEADERS*/
 
-h1, h2  {color: darkred;
+h1, h2  {color: #720000;
         font-weight: bold;
         text-align: center;
         line-height: 1.3rem;
@@ -207,7 +207,7 @@ li+li {margin-top: 0.5rem;}
 /* Contents Table */
 
 #contents {
-    color: darkred;
+    color: #720000;
     margin: 2rem auto;
     padding: 0;
     background-color: #f5f5f5eb;
@@ -223,7 +223,7 @@ li+li {margin-top: 0.5rem;}
 }
 #contents a {
     font-size: 1.6rem;
-    color: darkred;
+    color: #720000;
 }
 #contents a:link {
     text-decoration: none;}
@@ -270,7 +270,7 @@ footer a {
 }
 footer a:hover {
     text-decoration: none;
-    color: darkred;
+    color: #720000;
 }
 footer a:active {
     text-decoration: underline;

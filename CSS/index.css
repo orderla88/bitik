@@ -160,7 +160,7 @@ dialog[open].visible::backdrop {
 b {font-weight: bold;}
 ul {
     list-style-type: none;
-    margin-bottom: 1rem;
+    margin-bottom: 1.3rem;
 }
 li {margin: 0.5rem auto;}
 
