@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+    <meta   name="viewport" 
+            content="width=device-width initial-scale=1"> 
+    <link rel="stylesheet" href="../CSS/dictionary.css"> 
+    <script src="../main.js"></script>
+    <title>Dictionary</title>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Open dialog on button click
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("button.open");
+      if (!btn) return;
+
+      const container = btn.closest("div");
+      const dialog = container?.querySelector("dialog");
+      if (dialog) {
+        dialog.showModal();
+        dialog.scrollTop = 0;
+        // Force reflow before adding "visible" for animation
+        requestAnimationFrame(() => dialog.classList.add("visible"));
+      }
+    });
+
+    // Overlay click closes with animation
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.addEventListener("click", (e) => {
+        const rect = dialog.getBoundingClientRect();
+        const inside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+
+        if (!inside) {
+          dialog.classList.add("closing");
+          dialog.classList.remove("visible");
+          setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove("closing");
+          }, 500); // match CSS transition duration
+        }
+      });
+
+      // Animate built-in close buttons too
+      dialog.querySelectorAll("form[method='dialog'] button").forEach((btn) => {
+        btn.addEventListener("click", (ev) => {
+          ev.preventDefault();
+          dialog.classList.add("closing");
+          dialog.classList.remove("visible");
+          setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove("closing");
+          }, 500);
+        });
+      });
+    });
+  });
+</script>
+
+
+</head>
+
+<body>
+
+<header>
+    <h1>Сөздік</h1>  
+
+    <!-- <section>
+        <form class="search-bar" action="/search" method="get">
+                <input type="search"  placeholder="Search...">
+                <button type="submit">&#128269;</button>
+        </form>
+    </section>    -->
+</header>
+
+<hr>
+
+<main>
+
+<div id="別"> 
+<button type="button" class="open">別</button>
+<dialog>
+    <h2>別</h2>
+    <h3>ажыра.у</h3>
+    <dfn>Бір нәрсенің басқа нәрселерден бөлініп кетуі.</dfn>
+    <p>Бұзау сиырдан <em>別`май</em> жүр.</p>
+    <form method="dialog">
+        <div>бөліну;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">亜</button>
+<dialog>
+    <h2>亜</h2>
+    <h3>Азия</h3>
+    <dfn>Евразия материгінде орналасқан континент. 
+        Адам саны мен жер аумағы жағынан әлемдегі ең ірі континент.
+    </dfn>
+    <p>Қазақстан Орталық <em>亜`да</em> орналасқан.</p>
+    <form method="dialog">
+        <div>континент;</div>
+        <button>Жабу</button>       
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">月</button>
+<dialog>
+    <h2>月</h2>
+    <h3>Ай</h3>
+    <ol>
+        <li>
+        <dfn>
+            Жер шарынын аспандағы жалғыз серігі.
+            月 жерден 384,399 км қашықтықта орналасады. 
+            Ол шамамен 27,5-29,5 күнде жерді айналып шығады.
+        </dfn>
+        <p>
+           Жер мен 月 арасындағы қашықтық Жердін 30 еңіне тең.</p>      
+        </li>
+        <li>
+        <dfn>Отыз күндік немесе төрт апталық уақыт мерзімі.</dfn>
+        <p>
+            <em>月</em> көрдім, аман көрдім. <br>
+            Жаңа <em>月'да</em> жарылқа. (тілек)
+        </p>
+        </li>
+    </ol>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">域</button>
+<dialog>
+    <h2>域</h2>
+    <h3>Аймақ</h3>
+    <dfn>Мемлекеттің аумағына кіретін әкімшілік бірлік. 
+        Моңғол тілінде <i>"ру, тайпа"</i> мағынасын білдіреді.
+    </dfn>
+    <p>Моңғолияның Баян-Үлгі <em>域`ында</em> қазақтар тұрады.</p>
+    <form method="dialog">
+        <div>регион,&ensp;облыс;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+ 
+<div> 
+<button type="button" class="open">報</button>
+<dialog>
+    <h2>報</h2>
+    <h3>Ақпарат</h3>
+    <dfn>Белгілі жағдай, нәрсе я біреу жайлы таралған дерек.</dfn>
+    <p>Бүгін жер сілкінісі жайлы <em>報</em> тарады.</p>
+    <form method="dialog">
+        <div>хабар;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">名</button>
+<dialog>
+    <h2>名</h2>
+    <ol>
+        <li>
+        <h3>Ат</h3>
+        <dfn>зат есім; <br>
+            Жанды-жансыз нәрсеге, жерге берілген есім.</dfn>
+        <p>Балалар мысыққа Рэмбо деген 名 берді.</p>  
+        </li>
+        <li>
+        <h3>Ат.ау</h3>
+        <dfn>етістік; <br>
+            Жанды-жансыз нәрсеге, жерге, ұғымға ат беру.</dfn>
+        <p>Балалар мысықты Рэмбо деп 名'ды.</p> 
+        </li>
+    </ol>
+    <form method="dialog">
+        <div>есім,&ensp;лақап;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">女</button>
+<dialog>
+    <h2>女</h2>
+    <h3>Әйел</h3>
+    <dfn>Адам баласының ересек ұрғашы жыңыстысы.</dfn>
+    <p>
+        Үйді 40 еркек толтыра алмас, <br>
+        Бір 女 толтырар.
+    </p>
+    <form method="dialog">
+        <div>қатын,&ensp;қыз;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">子</button>
+<dialog>
+    <h2>子</h2>
+    <h3>Бала</h3>
+    <ol>
+        <li><dfn>зат есім;<br>
+                Кәмелетке толмаған адамның жас ұрпағы.
+                子'ның құқығы мен жауапкершілігі ересектікінен аз болады. <br>
+                Жалпы кез-келген тірі-жандының ұрпағын/төлін де 子 дейді.
+            </dfn>
+            <p>Қарға 子'сын әппағым дер. (мақал)</p>
+        </li>
+        <li><dfn>
+            сын есім;<br>
+            子'ға тән, 子'лық пен байланысты.
+            </dfn>
+            <p>Өскенде космонавт болу 子 арманым еді.</p>
+        </li>
+    </ol>
+    <form method="dialog">
+        <div>балақай,&ensp;бүлдіршін;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">幼</button>
+<dialog>
+    <h2>幼</h2>
+    <h3>Балдырған</h3>
+    <dfn>зат есім; <br>
+        Жасы 3-7 арасындағы бала.</dfn>
+    <p>幼 кезім аулдағы апамның қасында өтті.</p>
+    <form method="dialog">
+        <div>бүлдіршін,&ensp;балақай;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="西"> 
+<button type="button" class="open">西</button>
+<dialog>
+    <h2>西</h2>
+    <h3>Батыс</h3>
+    <ol>
+        <li>
+        <dfn>зат есім, сын есім, үстеу;<br>
+            Төрт жағрафиялық тараптың бірі; күн батысына қарай бағытталған тарап.</dfn>
+        <p>Ауарайы болжамы 西`тан суық келетінің мәлімдеді.</p> 
+        </li>
+        <li>
+        <dfn>зат есім;<br>
+            Жер шарының 西 бөлігінде орналасқан мемлекеттердің жалпы атауы.
+        </dfn>
+        <p>Жастар 西`тың модасына еліктеп жүр.</p>
+        </li>
+    </ol>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">装</button>
+<dialog>
+    <h2>装</h2>
+    <ul>
+        <li>
+             <h3>безен.діру</h3>
+            <dfn>етістік;<br>
+                Бір нәрсені я жерді қосымша зат-бұйыммен көркемдету, .</dfn>
+            <p>Үйді жаңа жылға қарай <em>装`діріп</em> қойдық.</p>
+        </li>
+        <li>
+            <h3>безен.у</h3>
+            <dfn>етістік;<br>
+                Өз-өзін қосымша зат-бұйыммен көркемдету, әдемілеу.</dfn>
+            <p>Әй, <em>装`іп</em> қайда бара жатырсын?.</p>
+        </li>
+    </ul>
+    <form method="dialog">
+        <div>әдемілеу;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">帯</button>
+<dialog>
+    <h2>帯</h2>
+    <h3>Белбеу</h3>
+    <dfn>зат есім;<br>
+        Былғарыдан, қайыстан, матадан, қалын жіптен жасалатын белдік, белбау.</dfn>
+    <p>Кезінде ағам маған былғарыдан жасалған <em>帯</em> сыйлады.</p>
+    <form method="dialog">
+        <div>белдік,&ensp;бау;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">娃</button>
+<dialog>
+    <h2>娃</h2>
+    <h3>Бөпе/Бөбек</h3>
+    <dfn>зат есім;<br>
+        Екі жасқа толмаған адам баласы. 
+        Қыз баланы "бөпе", ұл баланы "бөбек" дейді. 
+    </dfn>
+    <p>Бір келіншек <em>娃`сін</em> коляскаға салып көшеде кетіп барады.</p>
+    <form method="dialog">
+        <div>сәби,&ensp;шақалақ;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">分</button>
+<dialog>
+    <h2>分</h2>
+    <ul>
+        <li>
+            <h3>бөл.ік</h3>
+            <dfn>зат есім;<br>
+                Тұтас нәрсені я мөлшерді құрайтын бөлім.
+            </dfn>
+            <p>Ақшаның белгілі <em>分`ігін</em> тамаққа арнадым.</p>
+        </li>
+        <li>
+            <h3>бөл.у</h3>
+            <dfn>етістік;<br>
+                Бір нәрсені 分`іктерге, 分`імдерге бөлшектеу.
+            </dfn>
+            <p>Екеуіміз бір алманы <em>分`іп</em> жедік.</p>
+        </li>
+        <li>
+            <h3>бөл.у</h3>
+            <dfn>етістік;<br>
+                (МАТ) Бір санды кіші сандарға тең жаратын арифметикалық әдіс.
+            </dfn>
+            <p>22-ні 2-ге <em>分`сең</em> қанша?</p>
+        </li>
+        <li>
+            <h3>бөл.іну</h3>
+            <dfn>етістік;<br>
+            Бір нәрсенің я дененің басқалардан ажырау.
+            </dfn>
+            <p><em>分`інгенді</em> бөрі жейді. (мақал)</p>
+        </li>
+    </ul>
+    
+    <form method="dialog">
+        <div>бөлшектеу,&ensp;жару;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">局</button>
+<dialog>
+    <h2>局</h2>
+    <h3>Бюро</h3>
+    <dfn>зат есім;<br>
+        Белгілі бір іспен айналысатын, функцияны атқаратын кеңсе, мекеме.</dfn>
+    <p>Ақпараттық <em>局`дан</em> сол адамның телефоның білдім.</p>
+    <form method="dialog">
+        <div>мекеме,&ensp;кеңсе;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">高</button>
+<dialog>
+    <h2>高</h2>
+    <h3>биік</h3>
+    <dfn>сын есім, үстеу;<br>
+        Ортақ шамадан тыс жоғары немесе жоғарыда орналасқан.
+    </dfn>
+    <p> Эверест әлемдегі ең <em>高</em> тау.</p>
+
+    <form method="dialog">
+        <div>жоғары,&ensp;асқар;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">同</button>
+<dialog>
+    <h2>同</h2>
+    <h3>Бірдей</h3>
+    <dfn>сын есім, үстеу;<br>
+        Барлық жағынан ұқсас, сипаттас.
+    </dfn>
+    <p> Мына екі кілт <em>同</em> екен.</p>
+    <form method="dialog">
+        <div>парапар,&ensp;теңдес;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">頭</button>
+<dialog>
+    <h2>頭</h2>
+    <h3>Бас</h3>
+<ul>
+    <li>
+    <dfn>зат есім;<br>
+        Ми, көз, мұрын, ауыз және құлақ мүшелері бар,
+         денеге мойын арқылы жалғанатын дененің мүшесі. 
+    </dfn>
+    <p>Қыста <em>頭`ыңа</em> тымақ кимесен суық тиеді.</p>
+    </li>
+
+    <li>
+    <dfn>зат есім;<br>
+        Малды санауда қолданылатын бірлік.
+    </dfn>
+    <p>Совет үкіметіне дейін байдың 40 <em>頭</em> қойы болыпты.</p>
+    </li>
+
+    <li>
+    <dfn>зат есім;<br>
+        Жоғарғы жер немесе тарап, тобе.
+    </dfn>
+    <p>Ауылдағы таудың <em>頭`ына</em> неше рет шықтың?</p>
+    </li>
+
+    <li>
+    <dfn>зат есім;<br>
+        Бірдеңенің басталуы, шығуы.
+    </dfn>
+    <p>бұлақтың <em>頭`ы</em>,&ensp;жылдың <em>頭`ы</em>;</p>
+    </li>
+    <li>
+       <dfn>сын есім;<br>
+        Басты, негізгі, жетекші, үлкен.
+    </dfn>
+    <p> <em>頭</em> маман,&ensp;<em>頭</em> бармақ,&ensp;<em>頭</em> жүлде;</p>
+    </li>
+</ul>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="伝"> 
+<button type="button" class="open">伝</button>
+<dialog>
+    <h2>伝</h2>
+    <h3>Дәстүр</h3>
+    <dfn>зат есім;<br>
+        Әдет-ғұрыптың, наным-сенімнің атадан ұрпаққа жалғасуы.
+        Көп 伝`дің тұрмыстық және ырымдық мәні бар.
+    </dfn>
+    <p>"Сәлем салу" <em>伝`і</em> еліміздің онтүстігінде кең тараған деседі.</p>
+    
+    <form method="dialog">
+        <div>салт,&ensp;ғұрып;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">宗</button>
+<dialog>
+    <h2>宗</h2>
+    <h3>Дін</h3>
+    <dfn>зат есім;<br>
+     Наным-сенім мен құлшылық ережелерінің жүйесі.  
+    </dfn>
+    <p>Мектепте <em>宗`и</em> насихат жүргізуге тыйым салынған.</p>
+
+    <form method="dialog">
+        <div>сенім,&ensp;наным;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">民</button>
+<dialog>
+    <h2>民</h2>
+    <h3>Халық</h3>
+    <dfn>зат есім;<br>
+      Бір аймақты мекендейтін адамдар қауымы.
+    </dfn>
+    <p>Бұл жақтын <em>民`ы</em> қонақжай.</p>
+    
+    <form method="dialog">
+        <div>жұрт,&ensp;ел;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">帝</button>
+<dialog>
+    <h2>帝</h2>
+    <ul>
+    <li>
+        <h3>Импер.ия</h3>
+        <dfn>зат есім;<br>
+         Түрлі аймақтар мен ұлттардан құралған саяси бірлік. 
+         Билеушісі 帝`атор я басқа монарх.   
+        </dfn>
+        <p>Рим <em>帝`иясы</em> Еуропаның үлкен бөлігін жаулаған.</p> 
+    </li>
+    <li>
+        <h3>Импер.атор</h3>
+        <dfn>帝`ияны басқаратын ең жоғарғы лауазым.<br>
+        
+        </dfn>
+        <p>Наполеон 1804 жылы <em>帝</em> болып атанды.</p>
+    </li>
+    </ul>
+    
+
+    <form method="dialog">
+        <div>монарх,&ensp;патша;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">遇</button>
+<dialog>
+    <h2>遇</h2>
+    <h3>Кезіг.у</h3>
+    <dfn>етістік;<br>
+        Жолығу, ұшырасу
+    </dfn>
+    <p>Жолда улкен, қоңыр аю <em>遇`</em>ті.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">繡</button>
+<dialog>
+    <h2>繡</h2>    
+<ul>
+    <li>
+    <h3>Кесте</h3>
+    <dfn>зат есім;<br>
+    Қолөнер түрі. 
+    Мата үстіне түсті жіптермен тігілген я тоқылған нақыштар, өрнектер, бейнелер.
+    繡`ні инемен, бізбен, арнаулы құралмен жасайды.
+    </dfn>
+    <p>Жапонияда Баян-Үлгінің <em>繡</em> шебері Айнагүл ханымның жеке кормесі өтті.</p> 
+    </li>
+    <li>
+    <h3>Кесте.леу</h3>
+    <dfn>етістік;<br>
+    Мата үстіне нақыш-өрнектер мен бейнелерді түсті жіптермен тігу я тоқу.  
+    繡`леуді инемен, бізбен, арнаулы құралмен орындайды.
+    </dfn>
+    <p>Әйелдер бос уақытында матаны <em>繡`леп</em> отырады.</p> 
+    </li>
+</ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">服</button>
+<dialog>
+    <h2>服</h2>
+    <h3>Киім</h3>
+    <dfn>зат есім;<br>
+    Денені жабу үшін киілетін заттардың жиындық атауы.
+    </dfn>
+    <p>Енді <em>服`ді</em> онлайн сатып алуға да болады.</p>
+    
+    <form method="dialog">
+        <div>киім-кешек;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">着</button>
+<dialog>
+    <h2>着</h2>
+    <h3>ки.ю</h3>
+    <dfn>Денені киіммен жабу я бұйым тағу;<br>
+        
+    </dfn>
+    <p>Моншадан шығып таза киім <em>着`дім</em>.</p>
+
+    <form method="dialog">
+        <div>жамылу,&ensp;тағу;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">小</button>
+<dialog>
+    <h2>小</h2>
+<ul>
+    <li>
+    <h3>кіш.і</h3>
+    <dfn>сын есім;<br>
+        Белгілі сипат, қасиет жағынан басқадан шағын.
+    </dfn>
+    <p>Мен әпкемнен 4 жас <em>小`імін</em>.</p>    
+    </li>
+    <li>
+    <h3>кіш.кентай</h3>
+    <dfn>сын есім;<br>
+        Белгілі өлшем жағынан шағын.
+    </dfn>
+    <p><em>小`кентай</em> кезімде ауылда тұрғанмын.</p>    
+    </li>
+    <li>
+    <h3>кіш.кене</h3>
+    <dfn>сын есім;<br>
+        біраз, аздап, сәл.
+    </dfn>
+    <p>Матчтың басталуына дейін <em>小`кене</em> қалды.</p>    
+    </li>
+</ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="見"> 
+<button type="button" class="open">見</button>
+<dialog>
+    <h2>見</h2>
+    <h3>Көр.у</h3>
+<ul>
+    <li>
+        <dfn>етістік;<br>
+        Өмірдің қырын көзбен қабылдау я бақылау. 
+        Бір нәрсеге, оқиғаға күә болу.
+    </dfn>
+    <p>Жолда қасқырды <em>見`дік</em>.</p>
+    </li>
+    <li>
+        <dfn>етістік;<br>
+        Сынау, тәжірибеден өту.
+    </dfn>
+    <p>"Істеп <em>見`мей</em> танымайсын." (мақал)</p>
+    </li>
+</ul>
+    
+    <form method="dialog">
+        <div>қарау,&ensp;байқау,&ensp;көз салу;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">千</button>
+<dialog>
+    <h2>千</h2>
+    <h3>Мың / 1000</h3>
+    <dfn>сан есім;<br>
+        Бір мың санын белгілейтін таңба
+    </dfn>
+    <p>Базардан <em>8千</em> теңгеге бәтінке алдым.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">移</button>
+<dialog>
+    <h2>移</h2>
+    <h3>Көш.у</h3>
+    <dfn>етістік;<br>
+        Зат-мүлкіні алып бір жерден басқа жаққа қоныс аудару.
+    </dfn>
+    <p>Кейбір рулар 19-шы ғасырда Қытай мен Моңғолияға <em>移`іп</em> кетті.</p>
+
+    <form method="dialog">
+        <div>қоныс аудару;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">日</button>
+<dialog>
+    <h2>日</h2>
+    <h3>Күн</h3>
+<ul>
+    <li>
+    <dfn>зат есім;<br>
+        Жердің күнді толық бір айналу уақыты. 
+        Бұл шамамен 24 сағат, немесе 1,440 минут, немесе 86,400 секунд.
+    </dfn>
+    <p>Сіздің жолдамаңыз 2 <em>日`нен</em> кейін келеді.</p> 
+    </li>
+    <li>
+    <dfn>зат есім;<br>
+        Біздің планеталар жүйесінің ортасында орналасқан жұлдыз. 
+        日 негізінен сутегі мен гелийден тұратын ыстық плазмалық шар.
+    </dfn>
+    <p><em>日`нің</em> шуағы жерге дейін 8 минутта жетеді.</p> 
+    </li>
+</ul>
+    <form method="dialog">
+        <div>тәулік,&ensp;жұлдыз;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">意</button>
+<dialog>
+    <h2>意</h2>
+    <h3>Мағына</h3>
+    <dfn>зат есім;<br>
+        Жазу, сөйлеу я басқа нәрсе немесе әрекетте табылатын ой. 
+    </dfn>
+    <p>Хан таңбасы (иероглиф) әдетте белгілі <em>意`ны</em> білдіреді.</p>
+    
+    <form method="dialog">
+        <div>мән,&ensp;ой;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">畜</button>
+<dialog>
+    <h2>畜</h2>
+    <h3>Мал</h3>
+    <dfn>зат есім;<br>
+    Үй жануар(лар)ы.  
+    </dfn>
+    <p>Ауылда адамдар көбінесе <em>畜</em> менен күн көреді.</p>   
+    <form method="dialog">
+        <div>жануар,&ensp;түлік;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">布</button>
+<dialog>
+    <h2>布</h2>
+    <h3>Мата</h3>
+    <dfn>зат есім;<br>
+      Тоқыма станогында өзара перпендикуляр жіптерден белгілі ретпен өрілген текстиль өнімі.
+       布 табиғи (мақта, жүн, жібек) және синтетикалық (нейлон, полиэстер) жіптерден жасалады. 
+    </dfn>
+    <p>Ол әйеліме жібек <em>布`дан</em> тігілген халат сыйлады.</p>
+
+    <form method="dialog">
+        <div>кездеме,&ensp;бұл;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">蒙</button>
+<dialog>
+    <h2>蒙</h2>
+    <h3>Моңғол</h3>
+    <dfn>зат есім, сын есім;<br>
+      Қазақстан, Қытай және Ресей арасында орналасқан Шығыс Азиялық елді белгілейтін сөз.  
+    </dfn>
+    <p><em>蒙`дың</em> киіз үйі "гер" деп аталады.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">文</button>
+<dialog>
+    <h2>文</h2>
+    <ul>
+        <li>
+        <h3>Мәдени.ет</h3>
+        <dfn>зат есім;<br>
+        Белгілі адамдар қауымының материалды және абстрактті құндылықтарының жүйесі.
+        Бұған ортақ ғұрып, сенім, өнер сияқты  ұғымдарды жатқызуға болады.
+        文`ет бабадан ұрпаққа жалғасуымен сипатталады.  
+        </dfn>
+        <p>Қазақ <em>文`еті</em> көшпенділік өркениетке жатады.</p>  
+        </li>
+        <li>
+        <h3>Мәдени</h3>
+        <dfn>сын есім;<br>
+         文`етке, рұхани құндылықтарға қатысты.  
+        </dfn>
+        <p>"Рұхани Жаңғыру" бағдарламасы <em>文</em> құндылықтарымызды өркендете түсті.</p>  
+        </li>
+    </ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="居"> 
+<button type="button" class="open">居</button>
+<dialog>
+    <h2>居</h2>
+    <ul>
+    <li>
+        <h3>Мекен.деу</h3>
+        <dfn>етістік;<br>
+        Бір шынайы я абстарктты жерді, орынды, кеңістікті паналау.
+        </dfn>
+        <p>Барс мысығы орта және солтүстік Азияны <em>居'дейді</em>.</p>  
+    </li>
+    <li>
+        <h3>Мекен</h3>
+        <dfn>зат есім;<br>
+        Қоныс, пана, тұрақ.
+        </dfn>
+        <p>Полиция жоғалған баланың <em>居'ін</em> тапты.</p>  
+    </li>
+    </ul>
+    
+    <form method="dialog">
+        <div>
+            мекенжай,&ensp;адрес; <br>
+            тұру,&ensp;паналау;
+        </div>     
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">住</button>
+<dialog>
+    <h2>住</h2>
+    <h3>Тур.у</h3>
+    <dfn>етістік;<br>
+        Бір жерді паналау; өмір сүру.
+    </dfn>
+    <p>Мен әзірге әпкемнің үйінде <em>住`амын</em>.</p>
+    <form method="dialog">
+        <div>мекендеу;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">邦</button>
+<dialog>
+    <h2>邦</h2>
+    <h3>Ұлт</h3>
+    <dfn>зат есім;<br>
+    Ең ірі этникалық топ. 邦`тің ортақ шежіресі, тілі, мәдениеті болады. <br>
+    Этникалық жүйе: отбасы &Rarr; ру &Rarr; тайпа &Rarr; ұлт.   
+    </dfn>
+    <p>Қазақстанда 130-дан астам <em>邦</em> тұрады.</p>
+    
+    <form method="dialog">
+         <div>этнос;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">鋃</button>
+<dialog>
+    <h2>鋃</h2>
+<ul>
+    <li>
+        <h3>Нақыш</h3>
+        <ol>
+            <li>
+            <dfn>зат есім;<br>
+                Зат-нәрсенің бетіне салынған өрнек, бедер немесе ою.
+            </dfn>
+            <p>Киіз үйдегі көп нәрсе <em>鋃`тармен</em> безендіріледі.</p>   
+            </li>
+            <li>
+            <dfn>зат есім;<br>
+                Зат-нәрсенің адемі, ерекше жері.
+            </dfn>
+            <p>Ағашқа лак жағып едім, <em>鋃`тары</em> көрінді.</p>   
+            </li>
+        </ol>   
+    </li>
+    <li>
+        <h3>Нақыш.тау</h3>
+        <ol>
+            <li>
+            <dfn>етістік;<br>
+                Зат-нәрсенің бетіне өрнек, бедер немесе ою салу. </dfn>
+                <p>Дәстүрлі киімді өрнектермен <em>鋃`тайды</em>.</p>
+            </li>
+            <li>
+            <dfn>етістік;<br>
+                Зат-нәрсенің адемі, ерекше жерін айқындату.
+            </dfn>
+            <p>Әртіс әннің кей жерін <em>鋃`тап</em> айтты.</p>    
+            </li>            
+        </ol>   
+    </li>
+</ul>
+    
+<form method="dialog">
+    <div>безен,&ensp;өрнек;</div>
+    <button>Жабу</button>
+</form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">基</button>
+<dialog>
+    <h2>基</h2>
+<ul>
+    <li>
+     <h3>негіз</h3>
+    <dfn>зат есім;<br>
+       Нәрсе-жайдың іргетасы, түп-төркіні, тегі, басты қағидасы.
+    </dfn>
+    <p>Бұл үйдің <em>基`ін</em> атам қалап кеткен.</p>   
+    </li>
+    <li>
+     <h3>негіз.гі</h3>
+    <dfn>сын есім;<br>
+        Ең басты, шешуші, бастапқы, іргелі.
+    </dfn>
+    <p>Менің <em>基`гі</em> міндетім от жағу болды.</p>   
+    </li>
+    <li>
+     <h3>негіз.і</h3>
+    <dfn>үстеу;<br>
+        Шын мәнінде, түбінде, бар болғаны.
+    </dfn>
+    <p>Үй салу <em>基`і</em> қиын емес, жөндеу қиын екен.</p>   
+    </li>
+    
+</ul>
+    
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">巾</button>
+<dialog>
+    <h2>巾</h2>
+    <h3>Орамал</h3>
+<ul>
+    <li>
+      <dfn>зат есім;<br>
+       Дененің мүшелерін сүртуге арналған 4-бұрышты мата.
+    </dfn>
+    <p>Қол мен бетті сүртуге екі бөлек <em>巾`ым</em> бар.</p>  
+    </li>
+    <li>
+      <dfn>зат есім;<br>
+       Әйелдің басына киілетін 3-бұрышты мата.
+    </dfn>
+    <p>Жарықтық апам тойдан <em>巾`ында</em> түрлі кәмпит әкелетін.</p>  
+    </li>
+</ul>
+    <form method="dialog">
+        <div>қол-орамал,&ensp;бет-орамал, <br>
+             бас-орамал,&ensp;жаулық;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">南</button>
+<dialog>
+    <h2>南</h2>
+    <h3>Онтүстік</h3>
+    <dfn>үстеу, сын есім, зат есім;<br>
+    Төрт географиялық тараптың бірі; солтүстікке қарсы бағыт.
+    </dfn>
+    <p>Қазақстанның <em>南`інде</em> көктем ерте келеді.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">中</button>
+<dialog>
+    <h2>中</h2>
+    <h3>Орта</h3>
+    <dfn>үстеу, сын есім, зат есім;<br>
+    Бір жерді, нәрсені, уақытты екі жартыға бөлетін нүкте/жер.
+    </dfn>
+    <p>Түннің <em>中`сында</em> сәби оянып жылады.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">飾</button>
+<dialog>
+    <h2>飾</h2>
+    <h3>Өрнек</h3>
+    <dfn>зат есім;<br>
+    Табиғи немесе сәулет үлгісінде қайталанған сәндік элемент.
+    飾`тер қолөнер, бейнелеу, құрылыс, ж.б. жерде қолданылады. 
+    </dfn>
+    <p>Дәстүрлі киімді <em>飾`термен</em> нақыштайды.</p>
+    
+    <form method="dialog">
+        <div>нақыш,&ensp;орнамент;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="範"> 
+<button type="button" class="open">範</button>
+<dialog>
+    <h2>範</h2>
+    <h3>Үлгі</h3>
+    <dfn>зат есім;<br>
+     Еліктеуге, көрсетуге арналған өрнек, модель.    
+    </dfn>
+    <p>Өндіруші көліктің жаңа <em>範`сін</em> көрсетті.</p>
+    
+    <form method="dialog">
+        <div>модель,&ensp;шаблон;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">哈</button>
+<dialog>
+    <h2>哈</h2>
+    <h3>Қазақ</h3>
+    <dfn>зат есім, сын есім;<br>
+      Орта Азиядағы түркі тайпаларына қатысты 15-ші ғасырда шыққан этноним.  
+    </dfn>
+    <p><em>哈`ты</em> қытай "хәсәк", ал орыс "казах" дейді.</p>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">今</button>
+<dialog>
+    <h2>今</h2>
+    <h3>Қазір</h3>
+    <dfn>үстеу;<br>
+        Осы сәт немесе жақын арадағы уақыт.
+    </dfn>
+    <p>Мен <em>今</em> мәтін жазып отырмын.</p>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">衝</button>
+<dialog>
+    <h2>衝</h2>
+    <h3>Қақтығыс</h3>
+    <dfn>зат есім;<br>
+       Екі я одан көп жақ арасындағы урыс-керіс, шайқас 
+    </dfn>
+    <p>Шекарада <em>衝`тар</em> басталды.</p>
+    <form method="dialog">
+        <div>шайқас,&ensp;айқас;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">碰</button>
+<dialog>
+    <h2>碰</h2>
+    <h3>Соғыл.у</h3>
+    <dfn>етістік;<br>
+      Денелердің бір біріне қағылуы, тиюі.  
+    </dfn>
+    <p>Көшеде екі мәшін <em>碰`ысты</em>.</p>
+    
+    <form method="dialog">
+        <div>қақтығу,&ensp;шағылу;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">城</button>
+<dialog>
+    <h2>城</h2>
+    <h3>Қамал</h3>
+    <dfn>зат есім;<br>
+       Орта ғасырларда патша мен ақсүйектер отбасыларына салынған берік бекіністі жеке резиденция. 
+      城`ды бекінбеген сарайдан ажырататын қалың қабырғалары, бекіністері және орлары. 
+    </dfn>
+    <p>Экскурмияда 15-ші ғасырда салынған <em>城`ды</em> көрдік.</p>
+
+    <form method="dialog">
+        <div>бекініс;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">帽</button>
+<dialog>
+    <h2>帽</h2>
+    <h3>Қалпақ</h3>
+    <dfn>зат есім;<br>
+    Жұқа ақ киiзден, шұғадан тiгiлетін, етегi түрiк келетін, еркектердiң жеңiл бас киiмi.
+    </dfn>
+    <p>Мейрам күні көшеде <em>帽</em> киген ерлер көрінеді.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">妻</button>
+<dialog>
+    <h2>妻</h2>
+    <h3>Қатын</h3>
+<ul>
+    <li>
+     <dfn>зат есім;<br>
+      Байға тиген әйел, ердің зайыбы.<br>
+      Сонымен қатар жалпы әйел атаулы.  
+    </dfn>
+    <p>Ас бөлмеде <em>妻`дар</em> тамақ жасап жүр.</p>   
+    </li>
+    <li>
+     <dfn>сөз тіркесі;<br>
+      <em>妻 өсек</em> &ndash; құр-бос әңгіме;<br>
+      <em>妻 алу</em>  &ndash; үйлену, отау көтеру;
+    </dfn>
+    </li>
+</ul>
+    <form method="dialog">
+        <div>әйел</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">用</button>
+<dialog>
+    <h2>用</h2>
+    <h3>Қолдан.у</h3>
+    <dfn>етістік;<br>
+        Бір нәрсені белгілі мақсатта пайдалану, іске жарату. 
+    </dfn>
+    <p>Гранит тасын кесуге болгарка <em>用`дым</em>.</p>
+    
+    <form method="dialog">
+        <div>қолдану,&ensp;жұмсау;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="干"> 
+<button type="button" class="open">干</button>
+<dialog>
+    <h2>干</h2>
+    <h3>Құрғак</h3>
+    <dfn>сын есім;<br>
+       Ылғалсыз, кепкен, сусыз. 
+    </dfn>
+    <p>Атакама шөлі әлемдегі ең <em>干</em> шөл болып табылады.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">北</button>
+<dialog>
+    <h2>北</h2>
+    <h3>Солтүстік</h3>
+    <dfn>зат есім, сын есім, үстеу;<br>
+       Төрт жағрафиялық тараптың бірі; онтүстікке қарсы тарап. 
+    </dfn>
+    <p>Мемлекеттің қолдауымен <em>北`ке</em> көшкен отбасылар бар.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">水</button>
+<dialog>
+    <h2>水</h2>
+    <h3>Су</h3>
+    <dfn>зат есім, сын есім;<br>
+      Сутегі мен оттегі атомдарынан тұратын иіссіз, дәмсіз, мөлдір сұйықтық.
+      Ол қатты, сұйық және газ түрінде болады.
+    水 жердегі барлық тірі ағзалардың негізгі құрамдас бөлігі.  
+    </dfn>
+    <p>Ауылдағы өзеннің <em>水`ы</em> бұрыңғыдай мөлдір.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">詞</button>
+<dialog>
+    <h2>詞</h2>
+    <h3>Сөз</h3>
+    <dfn>зат есім;<br>
+       Айтылуы, жазылуы және мағынасы бар тіл бірлігі. 
+    </dfn>
+    <p>Жылы киім тәнді жылытар, <br>
+        Жылы <em>詞</em> жанды жылытар.&ensp; (мақал)</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">如</button>
+<dialog>
+    <h2>如</h2>
+    <h3>Сияқты</h3>
+<ul>
+    <li>
+    <dfn>шылау;<br>
+    Басқа нәрсе тәрізді, соған ұқсас. 
+    </dfn>
+    <p>Ол <em>如</em> қомағайды көрмедім..</p>
+    </li>
+    <li>
+    <dfn>үстеу;<br>
+    Ықтимал, секілді, сірә. 
+    </dfn>
+    <p>Мына жол жабық <em>如</em>.</p>
+    </li>
+</ul>
+    <form method="dialog">
+        <div>секілді,&ensp;сынды;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">山</button>
+<dialog>
+    <h2>山</h2>
+    <h3>Тау</h3>
+    <dfn>зат есім;<br>
+    Біршама биіктігімен (кемі 300м), тік беткейлерімен сипатталатын табиғи жер бедері.
+    Жотамен салыстырғанда 山'дың әдетте ұшы/шыңы болады.
+    </dfn>
+    <p><em>山`дың</em> басына шықсаң ауыл алақандай көрінеді.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">史</button>
+<dialog>
+    <h2>史</h2>
+    <h3>Тарих</h3>
+<ul>
+    <li>
+      <dfn>зат есім;<br>
+      Өткен оқиғаларды жинастырып зерттейтін ғылым.
+      史 құжаттар, ескерткіштер сияқты дереккөздерге сүйеніп,
+      адамзаттын саяси, мәдени және технологиялық даму барысын анықтайды. 
+    </dfn>
+    <p>Мектепте <em>史</em> пәнін жақсы көретұғым.</p>  
+    </li>
+    <li>
+      <dfn>зат есім;<br>
+      Белгілі адамға немесе затқа қатысты өткен оқиғалардың бүкіл тізбегі.
+    </dfn>
+    <p>Бұл үйдің <em>史'ы</em> сонау патша дәуірінен басталады.</p>  
+    </li>
+</ul>
+    <form method="dialog">
+        <div>хроника;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">眾</button>
+<dialog>
+    <h2>眾</h2>
+    <h3>Тобыр</h3>
+    <dfn>зат есім;<br>
+     Ретсіз жиналып шоғырланған қара жұрт   
+    </dfn>
+    <p><em>眾`ды</em> басқару ең оңай жолдың бірі &ndash; дін.</p>
+
+    <form method="dialog">
+        <div>қара жұрт;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">団</button>
+<dialog>
+    <h2>団</h2>
+    <h3>Топ</h3>
+    <dfn>зат есім;<br>
+    Бірге жиналған/жіктелген/шоғырланған адамдардың немесе заттардың жиынтық атауы.  
+    </dfn>
+    <p>Үйдің қасында бір <em>団</em> адам жиналды.</p>
+    
+    <form method="dialog">
+        <div>жиын,&ensp;шоғыр;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="地"> 
+<button type="button" class="open">地</button>
+<dialog>
+    <h2>地</h2>
+    <h3>Топырақ</h3>
+    <dfn>зат есім;<br>
+    Жер қыртысының сыртқы, ең үстіңгі, борпылдақ қабаты. 
+    地`тан өз азығын өсімдіктер мен түрлі жандылар табады.
+    </dfn>
+    <p>Бұл жақтың <em>地`ы</em> құнарлы.</p>
+
+    <form method="dialog">
+        <div>жер</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">立</button>
+<dialog>
+    <h2>立</h2>
+    <h3>Тұр.у</h3>
+<ul>
+    <li>
+     <dfn>етістік;<br>
+        Белгілі жерде немесе позицияда орналасу.
+    </dfn>
+    <p>Үйдің қасында шырша өсіп <em>立</em>.</p>   
+    </li>
+    <li>
+     <dfn>етістік;<br>
+        Аяқ арқылы тік күйге ену, тік күйде болу.
+    </dfn>
+    <p>Мұғалім кіргенде оқұшылар орындарынан <em>立'ды</em>.</p>   
+    </li>
+</ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">語</button>
+<dialog>
+    <h2>語</h2>
+    <h3>Тіл</h3>
+    <dfn>зат есім;<br>
+    Сөйлеу, жазу немесе ым-ишара арқылы жеткізілетін адамзаттын коммуникация құралы. 
+    </dfn>
+    <p>Өз <em>語`ің</em> бірлік үшін, өзге <em>語</em> тірлік үшін.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">舌</button>
+<dialog>
+    <h2>舌</h2>
+    <h3>Тіл</h3>
+    <dfn>зат есім;<br>
+    Дәм сезу, жалау, жұту үшін қолданылатын сүтқоректілердің ауызындағы бұлшықет.
+    Адамдар оған қоса 舌'ді сөйлеу құралы ретінде қолданылады.
+    </dfn>
+    <p>Медицинада <em>舌`дегі</em> жараны/язваны "афта" деп атайды.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">低</button>
+<dialog>
+    <h2>低</h2>
+    <h3>Төмен</h3>
+<ul>
+    <li>
+    <dfn>сын есім;<br>
+    Орналасуы, деңгейі, сапасы, т.б. қасиеті пәс, жоғары емес.    
+    </dfn>
+    <p>Өзендегі су деңгейі бұрыңғыдан <em>低</em>.</p>   
+    </li>
+    <li>
+    <dfn>үстеу;<br>
+        Астыға қарай бағытталған.
+    </dfn>
+    <p>Таудың еріген қары су болып <em>低</em> ағады.</p>   
+    </li>
+    <li>
+    <dfn>зат есім;<br>
+       Асты жақ, аласа жер-орын.
+    </dfn>
+    <p><em>低`де</em> кейбір сүреттер көрсетілген.</p>   
+    </li>
+</ul>
+    
+    
+    <form method="dialog">
+        <div>аласа,&ensp;пәс,&ensp;асты;
+        </div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">似</button>
+<dialog>
+    <h2>似</h2>
+<ul>
+    <li>
+     <h3>Ұқса.у</h3>
+    <dfn>етістік;<br>
+    Белгілі сипат жағынан өзге сияқты болу, басқаға құсау.
+    </dfn>
+    <p>Жағада нефритке <em>似`йтын</em> тас таптым.</p>   
+    </li>
+    <li>
+     <h3>Ұқса.с</h3>
+    <dfn>сын есім;<br>
+       Сияқты, сынды, тәріздес. 
+    </dfn>
+    <p>Базарда өзіме <em>似`с</em> бір адамды көрдім.</p>   
+    </li>
+</ul>
+    <form method="dialog">
+        <div>
+            құсау<br>
+            сияқты
+        </div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">大</button>
+<dialog>
+    <h2>大</h2>
+    <h3>Үлкен</h3>
+<ul>
+    <li>
+    <dfn>сын есім;<br>
+    Өлшемі я басқа қасиеті жағынан артық, ірі. 
+    </dfn>
+    <p>Ресей әлемдегі ең <em>大</em> мемлекет.</p> 
+    </li>
+     <li>
+    <dfn>сын есім;<br>
+        Елеулі, маңызды, айтулы.
+    </dfn>
+    <p>Бүгін бір <em>大</em> оқиға болды.</p> 
+    </li>
+</ul>
+    <form method="dialog">
+        <div>ірі,&ensp;елеулі;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">東</button>
+<dialog>
+    <h2>東</h2>
+    <h3>Шығыс</h3>
+<ul>
+    <li>
+     <dfn> зат, есім, сын есім, үстеу;<br>
+    Төрт географиялық тараптың бірі; батысқа қарсы тарап.  
+    </dfn>
+    <p>Батыстан <em>東`қа</em> қарай суық циклон келе жатыр.</p>
+    </li>
+    <li>
+     <dfn> зат есім, сын есім;<br>
+        Жер шарынын 東 бөлігінде орналасқан елдердің жалпы атауы.
+    </dfn>
+    <p><em>東`та</em> халық саны көп.</p>
+    </li>
+</ul>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">漠</button>
+<dialog>
+    <h2>漠</h2>
+    <h3>Шөл</h3>
+    <dfn>зат есім;<br>
+    Жауын-шашынның аздығымен сипатталатын (жылына 25Sмм-ден аз), үлкен әрі құрғақ жер аймағы.  
+    Бұндай жерде тек бейімделген жануарлар мен өсімдіктер өмір сүреді. 
+    Таралған ойға қайшы, шөлдердің 20%-ы ғана құмды. 
+    </dfn>
+    <p>
+        Қазақстанда <em>漠`дердің</em> жалпы аумағы 120млн гектар. 
+        Бұл республика аумағының 44%-н құрайды. 
+    </p>
+    
+    <form method="dialog">
+        <div>шөлейт;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="渴"> 
+<button type="button" class="open">渴</button>
+<dialog>
+    <h2>渴</h2>
+<ul>
+    <li>
+    <h3>Шөл</h3>
+    <dfn>зат есім;<br>
+    Ағзадағы су аздығының сезімі.  
+    </dfn>
+    <p>Су ішсем ғана <em>渴`ім</em> қанады.</p>    
+    </li>
+    <li>
+    <h3>Шөлде.у</h3>
+    <dfn>зат есім;<br>
+    Су жетіспеушілігін сезу, сусау.  
+    </dfn>
+    <p>Жаздың ыстығында тез <em>渴`йсің</em>.</p>    
+    </li>
+    <li>
+        <dfn>сөз тіркесі;<br>
+            <em>渴'ді қандыру</em> &ndash; сусауды басу;
+        </dfn>
+    </li>
+</ul>
+  
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">欧</button>
+<dialog>
+    <h2>欧</h2>
+    <h3>Еуропа</h3>
+    <dfn>зат есім;<br>
+    Еуразия материгінде орналасқан континент.  
+    </dfn>
+    <p><em>欧`ға</em> Таяу Шығыстан келген мигранттардың саны өсуде.</p>
+    
+    <form method="dialog">
+        <div>континент;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">否</button>
+<dialog>
+    <h2>否</h2>
+    <h3>Емес</h3>
+    <dfn>модальдық сөз;<br>
+    Сөзді я тіркесті терістейтін модальдық сөз.  
+    </dfn>
+    <p>Ерлік білекте <em>否</em>, жүректе.&ensp; (мақал)</p>
+
+    <form method="dialog">
+        <div>жоқ;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">不</button>
+<dialog>
+    <h2>不</h2>
+    <h3>Жоқ</h3>
+     <dfn>модальдық сөз;<br>
+    Сөзді я тіркесті терістейтін модальдық сөз.
+    "Бар" сөзiнiң антонимы.  
+    </dfn>
+    <p>"<em>不</em>, мен келіспеймін."</p>
+    
+    <form method="dialog">
+        <div>емес;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">称</button>
+<dialog>
+    <h2>称</h2>
+    <h3>Есім</h3>
+    <dfn>зат есім;<br>
+    Жанды-жансыз денеге қойылатын ат.
+    </dfn>
+    <p>Бір арғы атамның <em>称`і</em> Қашау еді.</p>
+
+    <form method="dialog">
+        <div>ат,&ensp;лақап;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">者</button>
+<dialog>
+    <h2>者</h2>
+    <h3>Адам</h3>
+    <dfn>зат есім;<br>
+    Homo sapiens (саналы адам) &ndash;
+    жер бетіндегі ең жоғарғы санаға ие тірі ағза. 
+    者 санасы, ақыл-ойы, сөйлеу және еңбек ету қабілетіне ие бірегей жаратылыс. 
+    者 қоғамдық-тарихи әрекет пен мәдениетті жасаушы.
+    </dfn>
+    <p><em>者</em> болып туу оңай, <em>者</em> болып қалу қиын.</p>
+    
+    <form method="dialog">
+        <div>кісі,&ensp;тұлға;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+ 
+<div> 
+<button type="button" class="open">國</button>
+<dialog>
+    <h2>國</h2>
+    <h3>Мемлекет</h3>
+    <dfn>зат есім;<br>
+        Қоғамды басқаратын саяси жүйе. 
+        國`тің өзіндік қоғамы, аумағы, қазынасы, рәміздері, заңдары болады.
+        國 тәуелсіз, я басқа 國`ке тәуелді болуы мүмкін.    
+    </dfn>
+    <p><em>國</em> басшысы жақында шетелге сапар жасады.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">氏</button>
+<dialog>
+    <h2>氏</h2>
+    <h3>Ру</h3>
+    <dfn>зат есім;<br>
+       Бiр әулеттен тараған туыстық, қандастық топ. 
+       Тайпаның бiр үлкен тармағы. <br>
+       Этникалық жүйе: отбасы &Rarr; ру &Rarr; тайпа &Rarr; ұлт.
+    </dfn>
+    <p>Найман тайпасының Саржомарт <em>氏`ына</em> жатамын.</p>
+
+    <form method="dialog">
+        <div>клан;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">国</button>
+<dialog>
+    <h2>国</h2>
+    <h3>Ел</h3>
+    <dfn>зат есім;<br>
+        Мемлекет, ұлт, тайпа, т.б. қауымдастықты құрайтын адамдар тобы.
+        国 ортақ мекен, тіл, мәдениет, дін, ж.б. менен сипатталады.   
+    </dfn>
+    <p>Өзге <em>国`де</em> сұлтан болғанша, өз <em>国`інде</em> ұлтан бол.</p>
+    
+    <form method="dialog">
+        <div>халық,&ensp;жұрт;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="族"> 
+<button type="button" class="open">族</button>
+<dialog>
+    <h2>族</h2>
+    <h3>Тайпа</h3>
+    <dfn>зат есім;<br>
+       Ұлты, тiлi және жерi ортақ, рулық байланыста болған этникалық топ. 
+    </dfn>
+    <p>Найман <em>族`сының</em> рулары бұрын Ертіс пен Орхон арасын мекендейтін.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">人</button>
+<dialog>
+    <h2>人</h2>
+<ul>
+    <li>
+     <h3>кісі</h3>
+    <dfn>зат есім;<br>
+      Адам, пенде, тұлға. 
+    </dfn>
+    <p><em>人`нің</em> ала жібін аттама.&ensp; (мақал)</p>   
+    </li>
+    <li>
+     <h3>-шы / -ші</h3>
+    <dfn>жұрнақ;<br>
+      Тұлға зат есімдерге жалғанатын жұрнақ. 
+    </dfn>
+    <p>Қасап<em>人</em>,&ensp;би<em>人</em>,&ensp;сату<em>人</em>;</p>   
+    </li>
+</ul>  
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">个</button>
+<dialog>
+    <h2>个</h2>
+    <h3>Бір</h3>
+    <dfn>артикль;<br>
+       Зат есімдердің алдына қойылатын нақсыз артикль.  
+    </dfn>
+    <p>Сыртта <em>个</em> адам жүр.</p>
+        
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">個</button>
+<dialog>
+    <h2>個</h2>
+    <h3>Тұлға</h3>
+    <dfn>зат есім;<br>
+      Жеке басты адам баласы.  
+    </dfn>
+    <p>Тарихтағы ұлы <em>個`ларды</em> танисыз ба?</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">労</button>
+<dialog>
+    <h2>労</h2>
+    <h3>Еңбек</h3>
+<ul>
+    <li>
+    <dfn>зат есім;<br>
+      Адамның өз немесе қоғамдық қажеттерін қанағаттандыруға бағытталған жұмыс.  
+    </dfn>
+    <p>Елдiң атын <em>労</em> шығарар. &ensp;(мақал)</p>   
+    </li>
+    <li>
+    <dfn>зат есім;<br>
+      Адам қолынан шыққан мәдени шығарма я құнды нәрсе.  
+    </dfn>
+    <p>Бұл сүретшінің ең танымал <em>労`і</em>.</p>   
+    </li>
+</ul>
+    <form method="dialog">
+        <div>қызмет,&ensp;жұмыс;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">智</button>
+<dialog>
+    <h2>智</h2>
+     <h3>Дана</h3>
+<ul>
+    <li>
+    <dfn>сын есім;<br>
+     Өмірлік тәжірибеге негізделген, терең түсінігі бар.   
+    </dfn>
+    <p>Үлкендердің <em>智</em> сөздерін сақтап қалу керек.</p>   
+    </li>
+    <li>
+    <dfn>зат есім;<br>
+      Көреген, білгір, данышпан адам
+    </dfn>
+    <p>Бiлiмдi болғың келсе, <em>智`ның</em> айтқанын тыңда &ensp;(мақал).</p>
+    </li>
+</ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">知</button>
+<dialog>
+    <h2>知</h2>
+<ul>
+    <li>
+     <h3>біл.у</h3>
+    <dfn>етістік;<br>
+        Бір ақпаратты түсініп ой-санада сақтау; белгілі нәрсемен/адаммен таныс болу.
+    </dfn>
+    <p>Сол оқиғаның мән-жайын <em>知`дім</em>.</p>   
+    </li>
+    <li>
+     <h3>біл.ім</h3>
+    <dfn>зат есім;<br>
+        Оқумен, үйренумен санаға қонатын ақиқат, түсiнiк.
+    </dfn>
+    <p>Оқу <em>知`ім</em> бұлағы, <em>知`ім</em> өмір шырағы. &ensp;(мақал)</p>   
+    </li>
+    <li>
+     <h3>біл.гір</h3>
+    <dfn>сын есім;<br>
+        Көп білетін, білімдар, ақпараты көп, түсінігі мол.
+    </dfn>
+    <p> <em>知`гір</em> маман мектептен басталады.</p>   
+    </li>
+</ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">友</button>
+<dialog>
+    <h2>友</h2>
+<ul>
+    <li>
+    <h3>Дос</h3>
+    <dfn>зат есім;<br>
+      Жақын таныс немесе сенімді, сырлас адам, жора-жолдас.  
+    </dfn>
+    <p>Шын <em>友`ыңа</em> өтiрiк айтпа.&ensp; (мақал)</p>    
+    </li>
+    <li>
+    <h3>Дос.тық</h3>
+    <dfn>зат есім;<br>
+       Жақындастық, тiлеулестiк, жора-жолдастық.  
+    </dfn>
+    <p>Екі ел арасындағы <em>友`тық</em> нығая түсті.</p>    
+    </li>
+    <li>
+    <h3>Дос.тық</h3>
+    <dfn>сын есім;<br>
+       Досқа тән, жаман ниетсіз. 
+    </dfn>
+    <p>Сол адамның <em>友`тық</em> әрекетіне алғысым бар.</p>    
+    </li>
+    
+</ul> 
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">朋</button>
+<dialog>
+    <h2>朋</h2>
+    <h3>Жолдас</h3>
+<ul>
+    <li>
+    <dfn>зат есім;<br>
+       Құрбы-дос, ортақтас. 
+    </dfn>
+    <p>Ұлының <em>朋`тары</em> келіп бірәз үй шаруасын тындырып кетті.</p>    
+    </li>
+    <li>
+    <dfn>зат есім;<br>
+       Сапарлас, серік. 
+    </dfn>
+    <p>Пойызда бір апай Алматыға дейін <em>朋`ым</em> болды.</p>    
+    </li>
+    <li>
+    <dfn>зат есім;<br>
+        Жар, жұбай.
+    </dfn>
+    <p>Алдымен <em>朋`ыммен</em> ақылдасуым керек.</p>    
+    </li>
+</ul>
+     
+    <form method="dialog">
+    <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="食"> 
+<button type="button" class="open">食</button>
+<dialog>
+    <h2>食</h2>
+    <h3>Тамақ</h3>
+    <dfn>зат есім;<br>
+        Жеп-ішетін қорек, ас, тағам
+    </dfn>
+    <p>Базарға барып керек <em>食</em> сатып алдым.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">男</button>
+<dialog>
+    <h2>男</h2>
+    <h3>Ер</h3>
+<ul>
+    <li>
+    <dfn>зат есім;<br>
+       Еркек. 
+    </dfn>
+    <p>Төр бөлмеде <em>男`лер</em> жиналып отыр.</p>   
+    </li>
+    <li>
+    <dfn>сын есім;<br>
+       Еркек жынысты. 
+    </dfn>
+    <p><em>男</em> балаларға арналған киімдер бар.</p>   
+    </li>
+    <li>
+     <dfn>сын есім;<br>
+       Ерге тән, қайсар. 
+    </dfn>
+    <p>Жігіт <em>男</em> мінезін көрсетті.</p>   
+    </li>
+</ul>
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">商</button>
+<dialog>
+    <h2>商</h2>
+    <h3>Сауда</h3>
+    <dfn>зат есім;<br>
+      Тауарлар мен қызметтерді сатып алу және сату 
+      арқылы жүзеге асатын экономикалық үдеріс.  
+    </dfn>
+    <p>Сол 90-шы жылдары көп адам <em>商`ға</em> кетті.</p>
+    
+    <form method="dialog">
+        <div>бизнес;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">鳥</button>
+<dialog>
+    <h2>鳥</h2>
+    <h3>Тауық</h3>
+    <dfn>зат есім;<br>
+      Қораз бен мекиеннен тұратын, еті мен жұмыртқасы үшін өсірілетін кең таралған үй құсы.  
+    </dfn>
+    <p>Қорада <em>鳥`тын</em> жұмыртқасын таптым.</p>
+
+    <form method="dialog">
+        <div>қораз,&ensp;мекиен;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">狗</button>
+<dialog>
+    <h2>狗</h2>
+    <h3>Күшік</h3>
+    <dfn>зат есім;<br>
+     Иттiң және ит тұқымдас жыртқыш аңдардың жаңа туылған немесе жас төлі..   
+    </dfn>
+    <p>Балалар <em>狗`ке</em> Мойнақ атын берді.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">犬</button>
+<dialog>
+    <h2>犬</h2>
+    <h3>Ит</h3>
+    <dfn>зат есім;<br>
+    Сүтқоректілер классы &Rarr; жыртқыштар тобы &Rarr; төбеттер тұқымына жататын жануар.  
+    Адамзат 犬`ті ерте заманда қолға үйретіп, оны адал әрі сенімді серігі ретінде санайды.  
+    </dfn>
+    <p>Қаңғыбас <em>犬`тер</em> кешке таман үріп маза бермейді.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">猫</button>
+<dialog>
+    <h2>猫</h2>
+    <h3>Мысық</h3>
+    <dfn>зат есім;<br>
+    Сүтқоректілер классы &Rarr; жыртқыштар тобы &Rarr; мысықтәрізділер тұқымына жататын жануар.  
+    猫 адамның үйінде жүреді, тазалықты ұнатады, ұсақ кеміргіштерді (тышқандарды) ұстап жейді
+    </dfn>
+    <p>Нағашы ағамның үйінде Пушок деген жоян ақ <em>猫</em> болатын.</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">麦</button>
+<dialog>
+    <h2>麦</h2>
+    <h3>Бидай</h3>
+    <dfn>зат есім;<br>
+    Әлемдегі ең маңызды әрі көп өсірілетін біржылдық дәнді дақыл. 
+    Оның дәнін ұнтақтап нан, макарон және кондитер өнімдерін жасайды. 
+    麦`дің сабаны мен қалдығы малға жем ретінде қолданылады.    
+    </dfn>
+    <p>Ауылда апам <em>麦`дән</em> талқан жасайтын еді.</p>
+
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">共</button>
+<dialog>
+    <h2>共</h2>
+    <h3>Бірге</h3>
+    <dfn>үстеу;<br>
+    Біреумен қосылып, ортақтасып, бір уақытта, жалғыз емес.   
+    </dfn>
+    <p>Автобуста көп адам мен <em>共</em> қайттым.</p>
+    
+    <form method="dialog">
+        <div>қоса,&ensp;қатар;</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div id="鵲"> 
+<button type="button" class="open">鵲</button>
+<dialog>
+    <h2>鵲</h2>
+    <h3>Сауысқан</h3>
+    <dfn>зат есім;<br>
+      Қарға тұқымдас, ала қанатты, ұзын құйрықты құс.
+      鵲 өте сақ әрі ақылды құс. Ол қызық заттарды жинағанды жақсы көреді.
+      鵲`ның денесі қарғаныкінен кішірек, ал дауысы шықылықтап шығады.  
+    </dfn>
+    <p><em>鵲</em> бір шоқып, қырық қаранады. &ensp;(мақал)</p>
+    
+    <form method="dialog">
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+
+
+</section>
+
+</main>
+
+<hr>
+
+<footer> 
+    <a href="radicals.html">&Larr;</a>
+    <a href="../index.html">&#8962;</a>             
+    <a href="read.html">&Rarr;</a>  
+</footer>
+
+</body>
+
+
+<!-- 
+
+ел 国
+халық 民
+ұлт 邦
+тайпа 族
+ру 氏
+мемлекет 國
+國
+国
+邦
+族
+民 
+氏
+鋃 ornek
+璋
+飾 naqishtau
+装 bezen
+ashekeyleu
+-->
+</html>

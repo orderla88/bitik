@@ -15,10 +15,14 @@ const NETWORK_FIRST_URLS = [
   './HTML/video.html',
   './HTML/news.html',
   './HTML/contribution.html',
+  './HTML/dictionary_1.html',
+  './HTML/radicals.html',
   // CSS folder:
   './CSS/styles.css',
   './CSS/index.css',
   './CSS/read.css',
+   './CSS/dictionary.css',
+  './CSS/radicals.css',
 ];
   const CACHE_FIRST_URLS = [
   './Assets/Images/library.webp',
@@ -135,6 +139,7 @@ const NETWORK_FIRST_URLS = [
   './PDF/Turli/tanbalar_kestesi.pdf',
   './PDF/Turli/similarities_of_jp_kz_v2.pdf',
   './PDF/Turli/jazular_jayli_v2.pdf',
+  './PDF/hansha.pdf',
 ];
 const NETWORK_FIRST_FOLDERS = ['/HTML/', '/CSS/'];
 const CACHE_FIRST_FOLDERS = ['/Assets/', '/PDF/'];

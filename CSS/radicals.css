@@ -1,0 +1,205 @@
+/* BROWSER STYLES RESET */
+
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+/*developer style.css */
+*, *:before, *:after {box-sizing: inherit;}  
+
+
+html {
+    font-family: "Noto Sans TC", "Calibri";
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+body {   
+    line-height: 1.5;
+    max-width: 800px;
+    border: solid thick #013;
+    margin: auto; 
+    padding: 1rem; 
+    background-color: #fff;
+    overflow-x: scroll;
+}
+header {
+    font-family: "Calibri", sans-serif;
+    background-color: #fff;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 0.7rem;
+}
+footer a {
+    color: #013;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+footer a:hover {
+    text-decoration: none;
+    color: #720000;
+}
+footer a:active {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+hr {color: #013;
+    margin: 1.5rem;
+}
+section {
+    max-width: 800px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: space-between;
+}
+div {
+    flex: 1 1 1;
+    height: fit-content;
+    width: fit-content;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+div:hover {
+    transform: scale(1.05);
+}
+button.open {
+    font-family: "Noto Sans TC";
+    font-size: 2rem;
+    padding: 0.5rem;
+    border: solid #013 thin;
+    background-color: #f5f5f5eb;   
+    color: #013; 
+}
+button.stroke {
+    font-family: "Noto Sans TC";
+    font-size: 2rem;
+    padding: 0.55rem 0.65rem;
+    border: solid #013 thin;
+    background-color: #013;
+    color: white; 
+}
+dialog {
+    border: solid #013 thin;
+    border-radius: 0.5rem;
+    color: #013;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease; 
+}
+dialog[open].visible {
+    opacity: 1;
+    transform: scale(1);
+}
+dialog.closing {
+    opacity: 0;
+    transform: scale(0.95);
+}
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+}
+dialog[open].visible::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+form {
+    display: flex; 
+    justify-content: space-evenly;
+} 
+form button {
+    font-family: "Calibri";
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    background-color: #f5f5f5eb;
+    border: solid #013 thin;
+    color: #013; 
+}
+form div {
+    padding: 0.3rem 0.5rem;
+    border: solid #013 thin;
+    font-size: 1rem;
+}
+
+/* TABLE */
+
+table tr td {font-size: 2rem;}
+table tr td, table, tr, th, td {border-collapse: collapse;}
+table {
+    border: solid thin #013;     
+    margin: 1rem auto;
+    margin-bottom: 2rem;
+    background-color: white;
+   }
+td {
+    border: solid thin;
+    white-space: nowrap;
+    padding: 0.4rem 0.7rem;
+    }
+
+/* HEADERS */
+
+h1, h2 {
+    text-align: center;
+    color: #013;
+}
+h1 {
+    font-family: "Calibri";
+    font-size: 2.5rem;
+    margin: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+h2 {
+    font-family: "Noto Sans TC";
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
+
+
+@media screen and (min-width: 481px) and (max-width: 600px){
+    html {font-size: 1.25rem; }   
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px){
+    html {font-size: 1.35rem; }   
+}
+
+@media screen and (min-width: 769px) {
+    html {font-size: 1.5rem; }
+}
+
+
+
+
+
+

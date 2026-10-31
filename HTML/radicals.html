@@ -1,0 +1,4705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+    <meta   name="viewport" 
+            content="width=device-width initial-scale=1"> 
+    <link rel="stylesheet" href="../CSS/radicals.css"> 
+    <script src="../main.js"></script>
+    <title>Radicals</title>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Open dialog on button click
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("button.open");
+      if (!btn) return;
+
+      const container = btn.closest("div");
+      const dialog = container?.querySelector("dialog");
+      if (dialog) {
+        dialog.showModal();
+        dialog.scrollTop = 0;
+        // Force reflow before adding "visible" for animation
+        requestAnimationFrame(() => dialog.classList.add("visible"));
+      }
+    });
+
+    // Overlay click Жабуs with animation
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.addEventListener("click", (e) => {
+        const rect = dialog.getBoundingClientRect();
+        const inside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+
+        if (!inside) {
+          dialog.classList.add("closing");
+          dialog.classList.remove("visible");
+          setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove("closing");
+          }, 500); // match CSS transition duration
+        }
+      });
+
+      // Animate built-inclose buttons too
+      dialog.querySelectorAll("form[method='dialog'] button").forEach((btn) => {
+        btn.addEventListener("click", (ev) => {
+          ev.preventDefault();
+          dialog.classList.add("closing");
+          dialog.classList.remove("visible");
+          setTimeout(() => {
+            dialog.close();
+            dialog.classList.remove("closing");
+          }, 500);
+        });
+      });
+    });
+  });
+</script>
+
+
+</head>
+
+<body>
+
+<header>
+    <h1>Бөлшектер</h1>  
+
+    <!-- <section>
+        <form class="search-bar" action="/search" method="get">
+                <input type="search"  placeholder="Search...">
+                <button type="submit">&#128269;</button>
+        </form>
+    </section>    -->
+</header>
+
+<main>
+
+
+<hr>
+<section id="s1">
+
+    <div> 
+    <button class="stroke">1</button>
+    </div>
+    
+    <div> 
+    <button type="button" class="open">⼀</button>
+    <dialog>
+        <h2>⼀</h2>
+    <table>
+       <tr>
+        <td>三</td>
+        <td>万</td>
+        <td>世</td>
+        <td>子</td>
+        <td>与</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 1</div>
+        <button>Жабу</button>
+        </form>
+    </dialog>
+    </div>
+
+    <div> 
+    <button type="button" class="open">⼁</button>
+    <dialog>
+    <h2>⼁</h2>
+    <table>
+    <tr>
+        <td>个</td>
+        <td>中</td>
+        <td>丰</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 2</div>
+            <button>Жабу</button>
+        </form>
+    </dialog>
+    </div>
+
+    <div> 
+    <button type="button" class="open">⼂</button>
+    <dialog>
+    <h2>⼂</h2>
+    <table>
+    <tr>
+        <td>犬</td>
+        <td>丸</td>
+        <td>主</td>
+        <td>丹</td>
+        <td>太</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 3</div>
+            <button>Жабу</button>
+        </form>
+    </dialog>
+    </div>
+
+    <div> 
+    <button type="button" class="open">⼃</button>
+    <dialog>
+        <h2>⼃</h2>
+    <table>
+    <tr>
+        <td>乃</td>
+        <td>丸</td>
+        <td>久</td>
+        <td>邦</td>
+        <td>友</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 4</div>
+        <button>Жабу</button>
+    </form>
+    </dialog>
+    </div>
+    
+    <div> 
+    <button type="button" class="open">⼄</button>
+    <dialog>
+    <h2>⼄</h2>
+    <table>       
+    <tr>
+        <td>乞</td>
+        <td>乾</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 5</div>
+        <button>Жабу</button>
+        </form>
+    </dialog>
+    </div>
+
+    <div> 
+    <button type="button" class="open">⺃</button>
+    <dialog>
+        <h2>⺃</h2>
+    <table>
+       <tr>
+        <td>乱</td>
+        <td>乳</td>
+        <td>也</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 6</div>
+            <button>Жабу</button>
+        </form>
+    </dialog>
+    </div>
+
+    <div> 
+    <button type="button" class="open">⼅</button>
+    <dialog>
+        <h2>⼅</h2>
+        <table>       
+        <tr>
+            <td>事</td>
+            <td>争</td>
+            <td>了</td>
+            <td>予</td>
+        </tr>
+    </table>
+        <form method="dialog">
+            <div>№ 7</div>
+            <button>Жабу</button>
+        </form>
+    </dialog>
+    </div>  
+
+</section>
+
+
+<hr>
+<section id="s2">
+
+<div> 
+    <button class="stroke">2</button>
+    </div>
+
+<div> 
+    <button type="button" class="open">⼆</button>
+    <dialog>
+    <h2>⼆</h2>
+    <table>
+    <tr>
+        <td>井</td>
+        <td>云</td>
+        <td>宗</td>
+        <td>共</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 8</div>
+        <button>Жабу</button>
+    </form>
+    </dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">⼇</button>
+    <dialog>
+    <h2>⼇</h2>
+    <table>
+    <tr>
+        <td>亡</td>
+        <td>京</td>
+        <td>亥</td>
+        <td>亦</td>
+    </tr>
+    </table>   
+    <form method="dialog">
+        <div>№ 9</div>
+        <button>Жабу</button>
+    </form>
+    </dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">⼈</button>
+    <dialog>
+    <h2>⼈</h2>
+    <table>
+    <tr>
+        <td>以</td>
+        <td>⼈</td>
+        <td>渴</td>
+        <td>眾</td>
+    </tr>
+    </table> 
+    <form method="dialog">
+        <div>№ 10</div>
+        <button>Жабу</button>
+    </form>
+    </dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">⺅</button>
+    <dialog>
+    <h2>⺅</h2>
+    <table>
+    <tr>
+        <td>低</td>
+        <td>住</td>
+        <td>供</td>
+        <td>借</td>
+        <td>作</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 11</div>
+        <button>Жабу</button>
+    </form>
+    </dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">𠆢</button>
+    <dialog>
+    <h2>𠆢</h2>
+    <table>
+    <tr>
+        <td>全</td>
+        <td>以</td>
+        <td>今</td>
+        <td>哈</td>
+        <td>个</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 12</div>
+        <button>Жабу</button>
+    </form>
+    </dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">⼉</button>
+    <dialog>
+    <h2>⼉</h2>
+    <table>
+    <tr>
+        <td>元</td>
+        <td>先</td>
+        <td>兄</td>
+        <td>光</td>
+        <td>売</td>
+    </tr>
+    </table> 
+    <form method="dialog">
+        <div>№ 13</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">⼊</button>
+    <dialog>
+    <h2>⼊</h2>
+    <table>
+    <tr>
+        <td>两</td>
+        <td>内</td>
+        <td>込</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 14</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+    <button type="button" class="open">⼋</button>
+    <dialog>
+    <h2>⼋</h2>
+    <table>
+    <tr>
+        <td>六</td>
+        <td>公</td>
+        <td>兵</td>
+        <td>分</td>
+    </tr>
+    </table>  
+</table>
+    <form method="dialog">
+        <div>№ 15</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼌</button>
+<dialog>
+    <h2>⼌</h2>
+    <table>
+    <tr>
+        <td>円</td>
+        <td>内</td>
+        <td>巾</td>
+        <td>同</td>
+        <td>商</td>
+    </tr>
+    </table>
+    
+    <form method="dialog">
+        <div>№ 16</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼍</button>
+<dialog>
+    <h2>⼍</h2>
+    <table>
+    <tr>
+        <td>労</td>
+        <td>写</td>
+        <td>冗</td>
+        <td>冠</td>
+        <td>罕</td>
+    </tr>
+    </table>
+    
+    <form method="dialog">
+        <div>№ 17</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼎</button>
+<dialog>
+    <h2>⼎</h2>
+    <table>
+    <tr>
+        <td>江</td>
+        <td>渴</td>
+        <td>冷</td>
+        <td>冰</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 18</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼏</button>
+<dialog>
+    <h2>⼏</h2>
+    <table>
+    <tr>
+        <td>凡</td>
+        <td>凪</td>
+        <td>夙</td>
+        <td>冗</td>
+        <td>風</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 19</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼐</button>
+<dialog>
+    <h2>⼐</h2>
+    <table>
+    <tr>
+        <td>凶</td>
+        <td>山</td>
+        <td>出</td>
+        <td>凹</td>
+        <td>凼</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 20</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼑</button>
+<dialog>
+    <h2>⼑</h2>
+    <table>
+    <tr>
+        <td>切</td>
+        <td>分</td>
+        <td>初</td>
+        <td>忉</td>
+        <td>刃</td>
+    </tr>
+    </table>   
+    <form method="dialog">
+        <div>№ 21</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺉</button>
+<dialog>
+    <h2>⺉</h2>
+    <table>
+    <tr>
+        <td>別</td>
+        <td>利</td>
+        <td>刻</td>
+        <td>割</td>
+        <td>列</td>
+    </tr>
+    </table>  
+    <form method="dialog">
+        <div>№ 22</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼒</button>
+<dialog>
+    <h2>⼒</h2>
+    <table>
+    <tr>
+        <td>男</td>
+        <td>動</td>
+        <td>助</td>
+        <td>勉</td>
+        <td>効</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 23</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼓</button>
+<dialog>
+    <h2>⼓</h2>
+    <table>
+    <tr>
+        <td>包</td>
+        <td>匂</td>
+        <td>旬</td>
+        <td>狗</td>
+        <td>渴</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 24</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼔</button>
+<dialog>
+    <h2>⼔</h2>
+    <table>
+    <tr>
+        <td>北</td>
+        <td>花</td>
+        <td>指</td>
+        <td>死</td>
+        <td>老</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 25</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼕</button>
+<dialog>
+    <h2>⼕</h2>
+    <table>
+    <tr>
+        <td>欧</td>
+        <td>医</td>
+        <td>区</td>
+        <td>匠</td>
+        <td>匝</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 26</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼖</button>
+<dialog>
+    <h2>⼖</h2>
+    <table>
+    <tr>
+        <td>亡</td>
+        <td>忙</td>
+        <td>芒</td>
+        <td>甚</td>
+        <td>茫</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 27</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼗</button>
+<dialog>
+    <h2>⼗</h2>
+    <table>
+    <tr>
+        <td>協</td>
+        <td>午</td>
+        <td>卆</td>
+        <td>博</td>
+        <td>什</td>
+    </tr>
+    </table> 
+    <form method="dialog">
+        <div>№ 28</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼘</button>
+<dialog>
+    <h2>⼘</h2>
+    <table>
+    <tr>
+        <td>仆</td>
+        <td>下</td>
+        <td>外</td>
+        <td>扑</td>
+        <td>吓</td>
+    </tr>
+    </table>
+    
+    <form method="dialog">
+        <div>№ 29</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼙</button>
+<dialog>
+    <h2>⼙</h2>
+    <table>
+    <tr>
+        <td>印</td>
+        <td>却</td>
+        <td>卵</td>
+        <td>節</td>
+        <td>危</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 30</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼚</button>
+<dialog>
+    <h2>⼚</h2>
+    <table>
+    <tr>
+        <td>原</td>
+        <td>厚</td>
+        <td>厄</td>
+        <td>厘</td>
+        <td>厙</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 31</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼛</button>
+<dialog>
+    <h2>⼛</h2>
+    <table>
+    <tr>
+        <td>弘</td>
+        <td>去</td>
+        <td>伝</td>
+        <td>台</td>
+        <td>么</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 32</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼜</button>
+<dialog>
+    <h2>⼜</h2>
+    <table>
+    <tr>
+        <td>報</td>
+        <td>友</td>
+        <td>収</td>
+        <td>取</td>
+        <td>双</td>
+    </tr>
+    </table>
+    
+    <form method="dialog">
+        <div>№ 33</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+</section>
+
+
+<hr>
+<section id="s3">
+
+<div> 
+<button class="stroke">3</button>
+</div>
+
+<div> 
+<button type="button" class="open">⼝</button>
+<dialog>
+    <h2>⼝</h2>
+    <table>
+    <tr>
+        <td>名</td>
+        <td>局</td>
+        <td>哈</td>
+        <td>如</td>
+        <td>否</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 34</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼞</button>
+<dialog>
+    <h2>⼞</h2>
+    <table>
+    <tr>
+        <td>団</td>
+        <td>国</td>
+        <td>個</td>
+        <td>回</td>
+        <td>因</td>
+    </tr>
+    </table>
+    <form method="dialog"> 
+        <div>№ 35</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼟</button>
+<dialog>
+    <h2>⼟</h2>
+    <table>
+    <tr>
+        <td>娃</td>
+        <td>域</td>
+        <td>基</td>
+        <td>者</td>
+        <td>地</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 36</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼠</button>
+<dialog>
+    <h2>⼠</h2>
+    <table>
+    <tr>
+        <td>装</td>
+        <td>仕</td>
+        <td>志</td>
+        <td>壮</td>
+        <td>声</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 37</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼡</button>
+<dialog>
+    <h2>⼡</h2>
+    <table>
+    <tr>
+        <td>麦</td>
+        <td>夏</td>
+        <td>冬</td>
+        <td>変</td>
+        <td>愛</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 38</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼣</button>
+<dialog>
+    <h2>⼣</h2>
+    <table>
+    <tr>
+        <td>移</td>
+        <td>名</td>
+        <td>外</td>
+        <td>多</td>
+        <td>夜</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 39</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼤</button>
+<dialog>
+    <h2>⼤</h2>
+    <table>
+    <tr>
+        <td>犬</td>
+        <td>太</td>
+        <td>天</td>
+        <td>夫</td>
+        <td>奇</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 40</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼥</button>
+<dialog>
+    <h2>⼥</h2>
+    <table>
+    <tr>
+        <td>娃</td>
+        <td>妻</td>
+        <td>好</td>
+        <td>姉</td>
+        <td>娘</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 41</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼦</button>
+<dialog>
+    <h2>⼦</h2>
+    <table>
+    <tr>
+        <td>学</td>
+        <td>字</td>
+        <td>好</td>
+        <td>存</td>
+        <td>季</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 42</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼧</button>
+<dialog>
+    <h2>⼧</h2>
+    <table>
+    <tr>
+        <td>宗</td>
+        <td>家</td>
+        <td>安</td>
+        <td>完</td>
+        <td>定</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 43</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼨</button>
+<dialog>
+    <h2>⼨</h2>
+    <table>
+    <tr>
+        <td>団</td>
+        <td>寺</td>
+        <td>守</td>
+        <td>対</td>
+        <td>射</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 44</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼩</button>
+<dialog>
+    <h2>⼩, ⺌, ⺍</h2>
+    <table>
+    <tr>
+        <td>称</td>
+        <td>少</td>
+        <td>当</td>
+        <td>尚</td>
+        <td>労</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 45</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺐</button>
+<dialog>
+    <h2>⺐</h2>
+    <table>
+    <tr>
+        <td>尤</td>
+        <td>尬</td>
+        <td>无</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 46</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼫</button>
+<dialog>
+    <h2>⼫</h2>
+    <table>
+    <tr>
+        <td>局</td>
+        <td>居</td>
+        <td>屋</td>
+        <td>届</td>
+        <td>屈</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 47</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼬</button>
+<dialog>
+    <h2>⼬</h2>
+    <table>
+    <tr>
+        <td>屯</td>
+        <td>逆</td>
+        <td>艸</td>
+        <td>朔</td>
+        <td>芻</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 48</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼭</button>
+<dialog>
+    <h2>⼭</h2>
+    <table>
+    <tr>
+        <td>帯</td>
+        <td>岩</td>
+        <td>島</td>
+        <td>岸</td>
+        <td>岳</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 49</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼮</button>
+<dialog>
+    <h2>川, ⼮</h2>
+    <table>
+    <tr>
+        <td>州</td>
+        <td>巡</td>
+        <td>災</td>
+        <td>圳</td>
+        <td>洲</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 50</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼯</button>
+<dialog>
+    <h2>⼯</h2>
+    <table>
+    <tr>
+        <td>左</td>
+        <td>差</td>
+        <td>空</td>
+        <td>式</td>
+        <td>功</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 51</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼰</button>
+<dialog>
+    <h2>⼰</h2>
+    <table>
+    <tr>
+        <td>巻</td>
+        <td>紀</td>
+        <td>記</td>
+        <td>配</td>
+        <td>起</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 52</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼱</button>
+<dialog>
+    <h2>⼱</h2>
+    <table>
+    <tr>
+        <td>⼱</td>
+        <td>帯</td>
+        <td>布</td>
+        <td>飾</td>
+        <td>帽</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 53</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼲</button>
+<dialog>
+    <h2>⼲</h2>
+    <table>
+    <tr>
+        <td>平</td>
+        <td>幸</td>
+        <td>南</td>
+        <td>刊</td>
+        <td>汗</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 54</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺓</button>
+<dialog>
+    <h2>⺓</h2>
+    <table>
+    <tr>
+        <td>幼</td>
+        <td>幽</td>
+        <td>玄</td>
+        <td>糸</td>
+        <td>呦</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 55</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼴</button>
+<dialog>
+    <h2>⼴</h2>
+    <table>
+    <tr>
+        <td>広</td>
+        <td>店</td>
+        <td>庭</td>
+        <td>庫</td>
+        <td>床</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 56</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼵</button>
+<dialog>
+    <h2>⼵</h2>
+    <table>
+    <tr>
+        <td>建</td>
+        <td>延</td>
+        <td>廻</td>
+        <td>莚</td>
+        <td>廷</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 57</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼶</button>
+<dialog>
+    <h2>⼶</h2>
+    <table>
+    <tr>
+        <td>弁</td>
+        <td>共</td>
+        <td>弈</td>
+        <td>弇</td>
+        <td>弄</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 58</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼷</button>
+<dialog>
+    <h2>⼷</h2>
+    <table>
+    <tr>
+        <td>式</td>
+        <td>代</td>
+        <td>杙</td>
+        <td>貸</td>
+        <td>武</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 59</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼸</button>
+<dialog>
+    <h2>⼸</h2>
+    <table>
+    <tr>
+        <td>弗</td>
+        <td>引</td>
+        <td>弘</td>
+        <td>弟</td>
+        <td>弦</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 60</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺕</button>
+<dialog>
+    <h2>⺕, ⼹</h2>
+    <table>
+    <tr>
+        <td>尹</td>
+        <td>当</td>
+        <td>争</td>
+        <td>事</td>
+        <td>帚</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 61</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺔</button>
+<dialog>
+    <h2>⺔</h2>
+    <table>
+    <tr>
+        <td>仾</td>
+        <td>互</td>
+        <td>枑</td>
+        <td>沍</td>
+        <td>彔</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 62</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼺</button>
+<dialog>
+    <h2>⼺</h2>
+    <table>
+    <tr>
+        <td>形</td>
+        <td>彦</td>
+        <td>彩</td>
+        <td>彫</td>
+        <td>杉</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 63</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼻</button>
+<dialog>
+    <h2>⼻</h2>
+    <table>
+    <tr>
+        <td>待</td>
+        <td>後</td>
+        <td>往</td>
+        <td>得</td>
+        <td>役</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 64</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺾</button>
+<dialog>
+    <h2>⺾</h2>
+    <table>
+    <tr>
+        <td>花</td>
+        <td>草</td>
+        <td>芽</td>
+        <td>茶</td>
+        <td>葉</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 65</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻌</button>
+<dialog>
+    <h2>⻌</h2>
+    <table>
+    <tr>
+        <td>近</td>
+        <td>週</td>
+        <td>進</td>
+        <td>道</td>
+        <td>遊</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 66</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻏</button>
+<dialog>
+    <h2>⻏</h2>
+    <table>
+    <tr>
+        <td>都</td>
+        <td>郡</td>
+        <td>部</td>
+        <td>郵</td>
+        <td>邦</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 67</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻖</button>
+<dialog>
+    <h2>⻖</h2>
+    <table>
+    <tr>
+        <td>険</td>
+        <td>障</td>
+        <td>陥</td>
+        <td>陣</td>
+        <td>降</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 68</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺖</button>
+<dialog>
+    <h2>⺖</h2>
+    <table>
+    <tr>
+        <td>忙</td>
+        <td>快</td>
+        <td>性</td>
+        <td>怖</td>
+        <td>恨</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 69</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺘</button>
+<dialog>
+    <h2>⺘</h2>
+    <table>
+    <tr>
+        <td>打</td>
+        <td>持</td>
+        <td>指</td>
+        <td>投</td>
+        <td>押</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 70</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺡</button>
+<dialog>
+    <h2>⺡</h2>
+    <table>
+    <tr>
+        <td>海</td>
+        <td>池</td>
+        <td>洗</td>
+        <td>洋</td>
+        <td>活</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 71</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">丬</button>
+<dialog>
+    <h2>丬</h2>
+    <table>
+    <tr>
+        <td>将</td>
+        <td>装</td>
+        <td>壮</td>
+        <td>状</td>
+        <td>将</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 72</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺨</button>
+<dialog>
+    <h2>⺨</h2>
+    <table>
+    <tr>
+        <td>猫</td>
+        <td>独</td>
+        <td>狂</td>
+        <td>狩</td>
+        <td>猿</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 73</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+</section>
+
+
+<hr>
+<section id="s4">
+
+<div> 
+    <button class="stroke">4</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⼼</button>
+<dialog>
+    <h2>⼼, ⺗</h2>
+    <table>
+    <tr>
+        <td>志</td>
+        <td>忘</td>
+        <td>怒</td>
+        <td>思</td>
+        <td>悪</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 74</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼽</button>
+<dialog>
+    <h2>⼽</h2>
+    <table>
+    <tr>
+        <td>成</td>
+        <td>戦</td>
+        <td>我</td>
+        <td>戒</td>
+        <td>或</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 75</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼾</button>
+<dialog>
+    <h2>⼾</h2>
+    <h3>Есік</h3>
+    <table>
+    <tr>
+        <td>所</td>
+        <td>戻</td>
+        <td>房</td>
+        <td>雇</td>
+        <td>扉</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 76</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⼿</button>
+<dialog>
+    <h2>⼿</h2>
+    <table>
+    <tr>
+        <td>挙</td>
+        <td>拏</td>
+        <td>我</td>
+        <td>拿</td>
+        <td>掣</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 77</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div> 
+
+<div> 
+<button type="button" class="open">⽀</button>
+<dialog>
+    <h2>⽀</h2>
+    <table>
+    <tr>
+        <td>鼓</td>
+        <td>技</td>
+        <td>枝</td>
+        <td>肢</td>
+        <td>伎</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 78</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺙</button>
+<dialog>
+    <h2>⺙</h2>
+    <table>
+    <tr>
+        <td>改</td>
+        <td>攻</td>
+        <td>放</td>
+        <td>政</td>
+        <td>故</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 79</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽂</button>
+<dialog>
+    <h2>⽂</h2>
+    <table>
+    <tr>
+        <td>斐</td>
+        <td>斉</td>
+        <td>対</td>
+        <td>吝</td>
+        <td>彼</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 80</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽃</button>
+<dialog>
+    <h2>⽃</h2>
+    <table>
+    <tr>
+        <td>料</td>
+        <td>斜</td>
+        <td>斛</td>
+        <td>斟</td>
+        <td>科</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 81</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽄</button>
+<dialog>
+    <h2>⽄</h2>
+    <table>
+    <tr>
+        <td>新</td>
+        <td>所</td>
+        <td>断</td>
+        <td>折</td>
+        <td>斯</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 82</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽅</button>
+<dialog>
+    <h2>⽅</h2>
+    <table>
+    <tr>
+        <td>族</td>
+        <td>放</td>
+        <td>旅</td>
+        <td>訪</td>
+        <td>防</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 83</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽆</button>
+<dialog>
+    <h2>⽆</h2>
+    <table>
+    <tr>
+        <td>既</td>
+        <td>廐</td>
+        <td>漑</td>
+        <td>炁</td>
+        <td>墍</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 84</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽇</button>
+<dialog>
+    <h2>⽇</h2>
+    <table>
+    <tr>
+        <td>智</td>
+        <td>鵲</td>
+        <td>漠</td>
+        <td>者</td>
+        <td>旦</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 85</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽈</button>
+<dialog>
+    <h2>⽈</h2>
+    <table>
+    <tr>
+        <td>書</td>
+        <td>最</td>
+        <td>更</td>
+        <td>替</td>
+        <td>曽</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 86</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽉</button>
+<dialog>
+    <h2>⽉, ⺝</h2>
+    <table>
+    <tr>
+        <td>服</td>
+        <td>朋</td>
+        <td>明</td>
+        <td>期</td>
+        <td>望</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 87</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽊</button>
+<dialog>
+    <h2>⽊</h2>
+    <table>
+    <tr>
+        <td>村</td>
+        <td>樵</td>
+        <td>森</td>
+        <td>根</td>
+        <td>果</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 88</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽋</button>
+<dialog>
+    <h2>⽋</h2>
+    <table>
+    <tr>
+        <td>欧</td>
+        <td>次</td>
+        <td>欣</td>
+        <td>欲</td>
+        <td>欺</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 89</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽌</button>
+<dialog>
+    <h2>⽌</h2>
+    <table>
+    <tr>
+        <td>正</td>
+        <td>此</td>
+        <td>歩</td>
+        <td>武</td>
+        <td>歴</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 90</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽍</button>
+<dialog>
+    <h2>⽍</h2>
+    <table>
+    <tr>
+        <td>死</td>
+        <td>残</td>
+        <td>列</td>
+        <td>残</td>
+        <td>殊</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 91</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽎</button>
+<dialog>
+    <h2>⽎</h2>
+    <table>
+    <tr>
+        <td>殺</td>
+        <td>段</td>
+        <td>投</td>
+        <td>役</td>
+        <td>没</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 92</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽏</button>
+<dialog>
+    <h2>⽏</h2>
+    <table>
+    <tr>
+        <td>毎</td>
+        <td>海</td>
+        <td>梅</td>
+        <td>悔</td>
+        <td>苺</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 93</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽐</button>
+<dialog>
+    <h2>⽐</h2>
+    <table>
+    <tr>
+        <td>皆</td>
+        <td>批</td>
+        <td>階</td>
+        <td>昆</td>
+        <td>鹿</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 94</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽑</button>
+<dialog>
+    <h2>⽑</h2>
+    <table>
+    <tr>
+        <td>耗</td>
+        <td>毬</td>
+        <td>毯</td>
+        <td>毟</td>
+        <td>尾</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 95</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽒</button>
+<dialog>
+    <h2>⽒</h2>
+    <table>
+    <tr>
+        <td>氐</td>
+        <td>底</td>
+        <td>民</td>
+        <td>祇</td>
+        <td>眠</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 96</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽓</button>
+<dialog>
+    <h2>⽓</h2>
+    <table>
+    <tr>
+        <td>気</td>
+        <td>氛</td>
+        <td>㲴</td>
+        <td>氖</td>
+        <td>氢</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 97</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽔</button>
+<dialog>
+    <h2>⽔, 氺</h2>
+    <table>
+    <tr>
+        <td>泳</td>
+        <td>氷</td>
+        <td>尿</td>
+        <td>沓</td>
+        <td>泉</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 98</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽕</button>
+<dialog>
+    <h2>⽕</h2>
+    <table>
+    <tr>
+        <td>灯</td>
+        <td>灰</td>
+        <td>災</td>
+        <td>炊</td>
+        <td>炎</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 99</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺣</button>
+<dialog>
+    <h2>⺣</h2>
+    <table>
+    <tr>
+        <td>熱</td>
+        <td>煮</td>
+        <td>焦</td>
+        <td>点</td>
+        <td>烈</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 100</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽖</button>
+<dialog>
+    <h2>⽖</h2>
+    <table>
+    <tr>
+        <td>抓</td>
+        <td>稃</td>
+        <td>爬</td>
+        <td>爭</td>
+        <td>埒</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 101</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺤</button>
+<dialog>
+    <h2>⺤</h2>
+    <table>
+    <tr>
+        <td>受</td>
+        <td>乳</td>
+        <td>瑶</td>
+        <td>妥</td>
+        <td>采</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 102</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽗</button>
+<dialog>
+    <h2>⽗</h2>
+    <table>
+    <tr>
+        <td>爸</td>
+        <td>斧</td>
+        <td>交</td>
+        <td>校</td>
+        <td>郊</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 103</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">爿</button>
+<dialog>
+    <h2>爿</h2>
+    <table>
+    <tr>
+        <td>牀</td>
+        <td>牆</td>
+        <td>奘</td>
+        <td>將</td>
+        <td>寐</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 104</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽚</button>
+<dialog>
+    <h2>⽚</h2>
+    <table>
+    <tr>
+        <td>版</td>
+        <td>牌</td>
+        <td>牒</td>
+        <td>魸</td>
+        <td>沜</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 105</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽜</button>
+<dialog>
+    <h2>⽜</h2>
+    <table>
+    <tr>
+        <td>件</td>
+        <td>牝</td>
+        <td>牡</td>
+        <td>物</td>
+        <td>牧</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 106</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽝</button>
+<dialog>
+    <h2>⽝</h2>
+    <table>
+    <tr>
+        <td>突</td>
+        <td>伏</td>
+        <td>状</td>
+        <td>哭</td>
+        <td>獄</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 107</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺭</button>
+<dialog>
+    <h2>⺭</h2>
+    <table>
+    <tr>
+        <td>社</td>
+        <td>神</td>
+        <td>礼</td>
+        <td>祝</td>
+        <td>祈</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 108</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺹</button>
+<dialog>
+    <h2>⺹</h2>
+    <table>
+    <tr>
+        <td>老</td>
+        <td>耆</td>
+        <td>考</td>
+        <td>都</td>
+        <td>暑</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 109</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+</section>
+
+
+<hr>
+<section id="s5">
+
+<div> 
+    <button class="stroke">5</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⽞</button>
+<dialog>
+    <h2>⽞</h2>
+    <table>
+    <tr>
+        <td>弦</td>
+        <td>畜</td>
+        <td>兹</td>
+        <td>呟</td>
+        <td>泫</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 110</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽟</button>
+<dialog>
+    <h2>⽟</h2>
+    <table>
+    <tr>
+        <td>理</td>
+        <td>球</td>
+        <td>現</td>
+        <td>珍</td>
+        <td>珠</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 111</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽡</button>
+<dialog>
+    <h2>⽡</h2>
+    <table>
+    <tr>
+        <td>瓶</td>
+        <td>瓷</td>
+        <td>甑</td>
+        <td>甄</td>
+        <td>瓩</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 112</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽢</button>
+<dialog>
+    <h2>⽢</h2>
+    <table>
+    <tr>
+        <td>酣</td>
+        <td>某</td>
+        <td>柑</td>
+        <td>甜</td>
+        <td>邯</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 113</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽣</button>
+<dialog>
+    <h2>⽣</h2>
+    <table>
+    <tr>
+        <td>産</td>
+        <td>星</td>
+        <td>性</td>
+        <td>姓</td>
+        <td>牲</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 114</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽤</button>
+<dialog>
+    <h2>⽤</h2>
+    <table>
+    <tr>
+        <td>甫</td>
+        <td>甬</td>
+        <td>通</td>
+        <td>備</td>
+        <td>踊</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 115</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽥</button>
+<dialog>
+    <h2>⽥</h2>
+    <table>
+    <tr>
+        <td>由</td>
+        <td>甲</td>
+        <td>男</td>
+        <td>町</td>
+        <td>思</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 116</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽦</button>
+<dialog>
+    <h2>⽦, ⺪</h2>
+    <table>
+    <tr>
+        <td>定</td>
+        <td>是</td>
+        <td>胥</td>
+        <td>掟</td>
+        <td>疏</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 117</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽧</button>
+<dialog>
+    <h2>⽧</h2>
+    <table>
+    <tr>
+        <td>病</td>
+        <td>疾</td>
+        <td>症</td>
+        <td>疫</td>
+        <td>痛</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 118</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽨</button>
+<dialog>
+    <h2>⽨</h2>
+    <table>
+    <tr>
+        <td>発</td>
+        <td>登</td>
+        <td>癸</td>
+        <td>發</td>
+        <td>脊</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 119</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽩</button>
+<dialog>
+    <h2>⽩</h2>
+    <table>
+    <tr>
+        <td>的</td>
+        <td>迫</td>
+        <td>舶</td>
+        <td>粕</td>
+        <td>魄</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 120</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽪</button>
+<dialog>
+    <h2>⽪</h2>
+    <table>
+    <tr>
+        <td>披</td>
+        <td>波</td>
+        <td>疲</td>
+        <td>被</td>
+        <td>坡</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 121</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽫</button>
+<dialog>
+    <h2>⽫</h2>
+    <table>
+    <tr>
+        <td>盆</td>
+        <td>盛</td>
+        <td>盗</td>
+        <td>塩</td>
+        <td>温</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 122</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽬</button>
+<dialog>
+    <h2>⽬</h2>
+    <table>
+    <tr>
+        <td>見</td>
+        <td>眠</td>
+        <td>相</td>
+        <td>県</td>
+        <td>睡</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 123</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽭</button>
+<dialog>
+    <h2>⽭</h2>
+    <table>
+    <tr>
+        <td>柔</td>
+        <td>務</td>
+        <td>野</td>
+        <td>茅</td>
+        <td>矜</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 124</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽮</button>
+<dialog>
+    <h2>⽮</h2>
+    <table>
+    <tr>
+        <td>知</td>
+        <td>短</td>
+        <td>矧</td>
+        <td>医</td>
+        <td>雉</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 125</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽯</button>
+<dialog>
+    <h2>⽯</h2>
+    <table>
+    <tr>
+        <td>破</td>
+        <td>砕</td>
+        <td>硬</td>
+        <td>砂</td>
+        <td>岩</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 126</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽰</button>
+<dialog>
+    <h2>⽰</h2>
+    <table>
+    <tr>
+        <td>祭</td>
+        <td>禁</td>
+        <td>宗</td>
+        <td>票</td>
+        <td>崇</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 127</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽱</button>
+<dialog>
+    <h2>⽱</h2>
+    <table>
+    <tr>
+        <td>禹</td>
+        <td>禺</td>
+        <td>偶</td>
+        <td>寓</td>
+        <td>属</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 128</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽲</button>
+<dialog>
+    <h2>⽲</h2>
+    <table>
+    <tr>
+        <td>私</td>
+        <td>秋</td>
+        <td>科</td>
+        <td>和</td>
+        <td>移</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 129</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽳</button>
+<dialog>
+    <h2>⽳</h2>
+    <table>
+    <tr>
+        <td>究</td>
+        <td>空</td>
+        <td>突</td>
+        <td>窒</td>
+        <td>窓</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 130</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽴</button>
+<dialog>
+    <h2>⽴</h2>
+    <table>
+    <tr>
+        <td>拉</td>
+        <td>音</td>
+        <td>彦</td>
+        <td>泣</td>
+        <td>剖</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 131</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺫</button>
+<dialog>
+    <h2>⺫</h2>
+    <table>
+    <tr>
+        <td>置</td>
+        <td>買</td>
+        <td>署</td>
+        <td>罪</td>
+        <td>夢</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 132</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">𦉰</button>
+<dialog>
+    <h2>𦉰</h2>
+    <table>
+    <tr>
+        <td>岡</td>
+        <td>剛</td>
+        <td>鋼</td>
+        <td>崗</td>
+        <td>罔</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 133</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻂</button>
+<dialog>
+    <h2>⻂</h2>
+    <table>
+    <tr>
+        <td>初</td>
+        <td>袖</td>
+        <td>裕</td>
+        <td>複</td>
+        <td>褐</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 134</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⺛</button>
+<dialog>
+    <h2>⺛</h2>
+    <table>
+    <tr>
+        <td>既</td>
+        <td>邪</td>
+        <td>芽</td>
+        <td>砑</td>
+        <td>穿</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 135</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+
+</section>
+
+
+<hr>
+<section id="s6">
+
+<div> 
+    <button class="stroke">6</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⺮</button>
+<dialog>
+    <h2>⺮</h2>
+    <table>
+    <tr>
+        <td>⽵</td>
+        <td>笑</td>
+        <td>筆</td>
+        <td>算</td>
+        <td>簡</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 136</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽶</button>
+<dialog>
+    <h2>⽶</h2>
+    <table>
+    <tr>
+        <td>粉</td>
+        <td>粒</td>
+        <td>精</td>
+        <td>粘</td>
+        <td>粕</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 137</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽷</button>
+<dialog>
+    <h2>⽷</h2>
+    <table>
+    <tr>
+        <td>紙</td>
+        <td>終</td>
+        <td>線</td>
+        <td>組</td>
+        <td>絵</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 138</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽸</button>
+<dialog>
+    <h2>⽸</h2>
+    <table>
+    <tr>
+        <td>缺</td>
+        <td>缸</td>
+        <td>罌</td>
+        <td>陶</td>
+        <td>匋</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 139</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽺</button>
+<dialog>
+    <h2>⽺, ⺷</h2>
+    <table>
+    <tr>
+        <td>詳</td>
+        <td>群</td>
+        <td>鮮</td>
+        <td>洋</td>
+        <td>姜</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 140</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽻</button>
+<dialog>
+    <h2>⽻, 羽</h2>
+    <table>
+    <tr>
+        <td>習</td>
+        <td>翌</td>
+        <td>翔</td>
+        <td>扇</td>
+        <td>搨</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 141</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽽</button>
+<dialog>
+    <h2>⽽</h2>
+    <table>
+    <tr>
+        <td>耐</td>
+        <td>耑</td>
+        <td>耏</td>
+        <td>耐</td>
+        <td>喘</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 142</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽾</button>
+<dialog>
+    <h2>⽾</h2>
+    <table>
+    <tr>
+        <td>耕</td>
+        <td>耗</td>
+        <td>耘</td>
+        <td>耙</td>
+        <td>誄</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 143</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽿</button>
+<dialog>
+    <h2>⽿</h2>
+    <table>
+    <tr>
+        <td>取</td>
+        <td>耽</td>
+        <td>恥</td>
+        <td>耿</td>
+        <td>聞</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 144</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾀</button>
+<dialog>
+    <h2>⾀</h2>
+    <table>
+    <tr>
+        <td>書</td>
+        <td>筆</td>
+        <td>律</td>
+        <td>建</td>
+        <td>津</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 145</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾁</button>
+<dialog>
+    <h2>⾁</h2>
+    <table>
+    <tr>
+        <td>胔</td>
+        <td>胾</td>
+        <td>瘸</td>
+        <td>腐</td>
+        <td>臠</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 146</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾃</button>
+<dialog>
+    <h2>⾃</h2>
+    <table>
+    <tr>
+        <td>臭</td>
+        <td>臬</td>
+        <td>臭</td>
+        <td>息</td>
+        <td>鼻</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 147</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾄</button>
+<dialog>
+    <h2>⾄</h2>
+    <table>
+    <tr>
+        <td>到</td>
+        <td>室</td>
+        <td>致</td>
+        <td>窒</td>
+        <td>屋</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 148</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾅</button>
+<dialog>
+    <h2>⾅</h2>
+    <table>
+    <tr>
+        <td>舁</td>
+        <td>臾</td>
+        <td>臽</td>
+        <td>桕</td>
+        <td>兒</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 149</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾆</button>
+<dialog>
+    <h2>⾆</h2>
+    <table>
+    <tr>
+        <td>話</td>
+        <td>活</td>
+        <td>括</td>
+        <td>辞</td>
+        <td>憩</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 150</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾇</button>
+<dialog>
+    <h2>⾇</h2>
+    <table>
+    <tr>
+        <td>舞</td>
+        <td>舜</td>
+        <td>隣</td>
+        <td>傑</td>
+        <td>憐</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 151</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾈</button>
+<dialog>
+    <h2>⾈</h2>
+    <table>
+    <tr>
+        <td>船</td>
+        <td>航</td>
+        <td>般</td>
+        <td>舶</td>
+        <td>搬</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 152</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾉</button>
+<dialog>
+    <h2>⾉</h2>
+    <table>
+    <tr>
+        <td>根</td>
+        <td>銀</td>
+        <td>限</td>
+        <td>痕</td>
+        <td>退</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 153</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾊</button>
+<dialog>
+    <h2>⾊</h2>
+    <table>
+    <tr>
+        <td>絶</td>
+        <td>艴</td>
+        <td>栬</td>
+        <td>蕝</td>
+        <td>銫</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 154</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾌</button>
+<dialog>
+    <h2>⾌</h2>
+    <table>
+    <tr>
+        <td>虐</td>
+        <td>虚</td>
+        <td>虎</td>
+        <td>彪</td>
+        <td>號</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 155</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾍</button>
+<dialog>
+    <h2>⾍</h2>
+    <table>
+    <tr>
+        <td>蚊</td>
+        <td>蜂</td>
+        <td>蛇</td>
+        <td>蛍</td>
+        <td>融</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 156</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾎</button>
+<dialog>
+    <h2>⾎</h2>
+    <table>
+    <tr>
+        <td>衄</td>
+        <td>恤</td>
+        <td>衁</td>
+        <td>衂</td>
+        <td>衅</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 157</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾏</button>
+<dialog>
+    <h2>⾏</h2>
+    <table>
+    <tr>
+        <td>街</td>
+        <td>衝</td>
+        <td>街</td>
+        <td>衡</td>
+        <td>衛</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 158</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾐</button>
+<dialog>
+    <h2>⾐</h2>
+    <table>
+    <tr>
+        <td>表</td>
+        <td>衰</td>
+        <td>袋</td>
+        <td>裁</td>
+        <td>装</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 159</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾑</button>
+<dialog>
+    <h2>⾑, ⻃</h2>
+    <table>
+    <tr>
+        <td>廼</td>
+        <td>洒</td>
+        <td>価</td>
+        <td>要</td>
+        <td>堙</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 160</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⽠</button>
+<dialog>
+    <h2>⽠</h2>
+    <table>
+    <tr>
+        <td>孤</td>
+        <td>弧</td>
+        <td>柧</td>
+        <td>笟</td>
+        <td>呱</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 161</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+</section>
+
+
+<hr>
+<section id="s7">
+
+<div> 
+    <button class="stroke">7</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⾂</button>
+<dialog>
+    <h2>⾂</h2>
+    <table>
+    <tr>
+        <td>臥</td>
+        <td>豎</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 162</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾒</button>
+<dialog>
+    <h2>⾒</h2>
+    <table>
+    <tr>
+        <td>規</td>
+        <td>視</td>
+        <td>覚</td>
+        <td>親</td>
+        <td>覧</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 163</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾓</button>
+<dialog>
+    <h2>⾓</h2>
+    <table>
+    <tr>
+        <td>解</td>
+        <td>触</td>
+        <td>觜</td>
+        <td>觚</td>
+        <td>确</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 164</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾔</button>
+<dialog>
+    <h2>⾔</h2>
+    <table>
+    <tr>
+        <td>話</td>
+        <td>語</td>
+        <td>信</td>
+        <td>這</td>
+        <td>獄</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 165</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾕</button>
+<dialog>
+    <h2>⾕</h2>
+    <table>
+    <tr>
+        <td>欲</td>
+        <td>浴</td>
+        <td>容</td>
+        <td>逧</td>
+        <td>卻</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 166</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾖</button>
+<dialog>
+    <h2>⾖</h2>
+    <table>
+    <tr>
+        <td>頭</td>
+        <td>登</td>
+        <td>短</td>
+        <td>豉</td>
+        <td>豈</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 167</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾗</button>
+<dialog>
+    <h2>⾗</h2>
+    <table>
+    <tr>
+        <td>豚</td>
+        <td>象</td>
+        <td>毅</td>
+        <td>稼</td>
+        <td>遂</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 168</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾘</button>
+<dialog>
+    <h2>⾘</h2>
+    <table>
+    <tr>
+        <td>豹</td>
+        <td>豺</td>
+        <td>貂</td>
+        <td>貓</td>
+        <td>貍</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 169</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾙</button>
+<dialog>
+    <h2>⾙</h2>
+    <table>
+    <tr>
+        <td>財</td>
+        <td>貨</td>
+        <td>貯</td>
+        <td>資</td>
+        <td>買</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 170</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾚</button>
+<dialog>
+    <h2>⾚</h2>
+    <table>
+    <tr>
+        <td>赦</td>
+        <td>赫</td>
+        <td>赭</td>
+        <td>奕</td>
+        <td>迹</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 171</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾛</button>
+<dialog>
+    <h2>⾛</h2>
+    <table>
+    <tr>
+        <td>起</td>
+        <td>超</td>
+        <td>赴</td>
+        <td>趙</td>
+        <td>趁</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 172</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾜</button>
+<dialog>
+    <h2>⾜, ⻊</h2>
+    <table>
+    <tr>
+        <td>路</td>
+        <td>跡</td>
+        <td>促</td>
+        <td>捉</td>
+        <td>踉</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 173</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾝</button>
+<dialog>
+    <h2>⾝</h2>
+    <table>
+    <tr>
+        <td>射</td>
+        <td>躬</td>
+        <td>躶</td>
+        <td>躭</td>
+        <td>躺</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 174</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾞</button>
+<dialog>
+    <h2>⾞</h2>
+    <table>
+    <tr>
+        <td>転</td>
+        <td>運</td>
+        <td>軽</td>
+        <td>輪</td>
+        <td>連</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 175</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾟</button>
+<dialog>
+    <h2>⾟</h2>
+    <table>
+    <tr>
+        <td>辞</td>
+        <td>辟</td>
+        <td>辣</td>
+        <td>辜</td>
+        <td>辞</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 176</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾠</button>
+<dialog>
+    <h2>⾠</h2>
+    <table>
+    <tr>
+        <td>農</td>
+        <td>脤</td>
+        <td>辴</td>
+        <td>振</td>
+        <td>賑</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 177</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾣</button>
+<dialog>
+    <h2></h2>
+    <table>
+    <tr>
+       <td>配</td>
+        <td>酒</td>
+        <td>酢</td>
+        <td>酌</td>
+        <td>酋</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 178</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾤</button>
+<dialog>
+    <h2>⾤</h2>
+    <table>
+    <tr>
+        <td>釈</td>
+        <td>番</td>
+        <td>悉</td>
+        <td>釉</td>
+        <td>幡</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 179</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾥</button>
+<dialog>
+    <h2>⾥</h2>
+    <table>
+    <tr>
+        <td>野</td>
+        <td>哩</td>
+        <td>黒</td>
+        <td>重</td>
+        <td>厘</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 180</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻨</button>
+<dialog>
+    <h2>⻨, 麥</h2>
+    <table>
+    <tr>
+        <td>麺</td>
+        <td>麸</td>
+        <td>麸</td>
+        <td>麭</td>
+        <td>麺</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 181</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+</section>
+
+
+<hr>
+<section id="8">
+
+<div> 
+    <button class="stroke">8</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⾦</button>
+<dialog>
+    <h2>⾦</h2>
+    <table>
+    <tr>
+        <td>銀</td>
+        <td>鉄</td>
+        <td>銅</td>
+        <td>鉛</td>
+        <td>針</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 182</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻑</button>
+<dialog>
+    <h2>⻑</h2>
+    <table>
+    <tr>
+        <td>張</td>
+        <td>帳</td>
+        <td>髪</td>
+        <td>脹</td>
+        <td>棖</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 183</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾨</button>
+<dialog>
+    <h2>⾨</h2>
+    <table>
+    <tr>
+        <td>開</td>
+        <td>閉</td>
+        <td>問</td>
+        <td>聞</td>
+        <td>簡</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 184</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾪</button>
+<dialog>
+    <h2>⾪</h2>
+    <table>
+    <tr>
+        <td>隸</td>
+        <td>康</td>
+        <td>逮</td>
+        <td>禄</td>
+        <td>慷</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 185</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾫</button>
+<dialog>
+    <h2>⾫</h2>
+    <table>
+    <tr>
+        <td>隻</td>
+        <td>隼</td>
+        <td>雀</td>
+        <td>集</td>
+        <td>雅</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 186</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾬</button>
+<dialog>
+    <h2>⾬, ⻗</h2>
+    <table>
+    <tr>
+        <td>雪</td>
+        <td>雲</td>
+        <td>電</td>
+        <td>雷</td>
+        <td>零</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 187</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻘</button>
+<dialog>
+    <h2>⻘, ⾭</h2>
+    <table>
+    <tr>
+        <td>靖</td>
+        <td>静</td>
+        <td>靛</td>
+        <td>靕</td>
+        <td>倩</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 188</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾮</button>
+<dialog>
+    <h2>⾮</h2>
+    <table>
+    <tr>
+        <td>悲</td>
+        <td>排</td>
+        <td>輩</td>
+        <td>扉</td>
+        <td>斐</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 189</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻟</button>
+<dialog>
+    <h2>⻟</h2>
+    <table>
+    <tr>
+        <td>飲</td>
+        <td>飯</td>
+        <td>飼</td>
+        <td>飾</td>
+        <td>飽</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 190</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻫</button>
+<dialog>
+    <h2>⻫</h2>
+    <table>
+    <tr>
+        <td>緕</td>
+        <td>剤</td>
+        <td>済</td>
+        <td>斎</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 191</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+</section>
+
+
+<hr>
+<section id="9">
+
+<div> 
+    <button class="stroke">9</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⾯</button>
+<dialog>
+    <h2>⾯</h2>
+    <table>
+    <tr>
+        <td>麺</td>
+        <td>緬</td>
+        <td>湎</td>
+        <td>靤</td>
+        <td>靦</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 192</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾰</button>
+<dialog>
+    <h2>⾰</h2>
+    <table>
+    <tr>
+        <td>靴</td>
+        <td>鞄</td>
+        <td>鞍</td>
+        <td>鞘</td>
+        <td>靱</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 193</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾲</button>
+<dialog>
+    <h2>⾲</h2>
+    <table>
+    <tr>
+        <td>韱</td>
+        <td>韲</td>
+        <td>韮</td>
+        <td>薤</td>
+        <td>懺</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 194</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾳</button>
+<dialog>
+    <h2>⾳</h2>
+    <table>
+    <tr>
+        <td>意</td>
+        <td>暗</td>
+        <td>韻</td>
+        <td>韶</td>
+        <td>障</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 195</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾴</button>
+<dialog>
+    <h2>⾴</h2>
+    <table>
+    <tr>
+        <td>頂</td>
+        <td>頃</td>
+        <td>須</td>
+        <td>預</td>
+        <td>頭</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 196</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾵</button>
+<dialog>
+    <h2>⾵</h2>
+    <table>
+    <tr>
+        <td>嵐</td>
+        <td>楓</td>
+        <td>颪</td>
+        <td>颱</td>
+        <td>瘋</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 197</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾶</button>
+<dialog>
+    <h2>⾶</h2>
+    <table>
+    <tr>
+        <td>飜</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 198</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾷</button>
+<dialog>
+    <h2>⾷</h2>
+    <table>
+    <tr>
+        <td>飯</td>
+        <td>館</td>
+        <td>飼</td>
+        <td>飽</td>
+        <td>飾</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 199</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾸</button>
+<dialog>
+    <h2>⾸</h2>
+    <table>
+    <tr>
+        <td>馗</td>
+        <td>道</td>
+        <td>馗</td>
+        <td>馘</td>
+        <td>渞</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 200</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾹</button>
+<dialog>
+    <h2></h2>
+    <table>
+    <tr>
+        <td>馥</td>
+        <td>香</td>
+        <td>楿</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 201</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+</section>
+
+
+<hr>
+<section id="10">
+
+<div> 
+    <button class="stroke">10</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⾱</button>
+<dialog>
+    <h2>⾱</h2>
+    <table>
+    <tr>
+        <td>韓</td>
+        <td>違</td>
+        <td>偉</td>
+        <td>緯</td>
+        <td>圍</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 202</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾺</button>
+<dialog>
+    <h2>⾺</h2>
+    <table>
+    <tr>
+        <td>駅</td>
+        <td>験</td>
+        <td>駐</td>
+        <td>駆</td>
+        <td>篤</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 203</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾻</button>
+<dialog>
+    <h2>⾻</h2>
+    <table>
+    <tr>
+        <td>髄</td>
+        <td>骸</td>
+        <td>骰</td>
+        <td>骼</td>
+        <td>髀</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 204</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾼</button>
+<dialog>
+    <h2>⾼</h2>
+    <table>
+    <tr>
+        <td>鄗</td>
+        <td>蒿</td>
+        <td>嵩</td>
+        <td>敲</td>
+        <td>槁</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 205</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾽</button>
+<dialog>
+    <h2>⾽</h2>
+    <table>
+    <tr>
+        <td>髪</td>
+        <td>髭</td>
+        <td>髷</td>
+        <td>髣</td>
+        <td>髢</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 206</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⾾</button>
+<dialog>
+    <h2>⾾</h2>
+    <table>
+    <tr>
+        <td>鬨</td>
+        <td>鬪</td>
+        <td>鬧</td>
+        <td>鬩</td>
+        <td>鬪</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 207</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿀</button>
+<dialog>
+    <h2>⿀</h2>
+    <table>
+    <tr>
+        <td>隔</td>
+        <td>膈</td>
+        <td>融</td>
+        <td>翮</td>
+        <td>槅</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 208</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿁</button>
+<dialog>
+    <h2>⿁</h2>
+    <table>
+    <tr>
+        <td>魂</td>
+        <td>魅</td>
+        <td>塊</td>
+        <td>魁</td>
+        <td>魄</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 209</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">竜</button>
+<dialog>
+    <h2>竜</h2>
+    <table>
+    <tr>
+        <td>滝</td>
+        <td>篭</td>
+        <td>槞</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 210</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+</section>
+
+
+<hr>
+<section id="11">
+
+<div> 
+    <button class="stroke">11</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⿂</button>
+<dialog>
+    <h2>⿂</h2>
+    <table>
+    <tr>
+        <td>鮮</td>
+        <td>鯨</td>
+        <td>漁</td>
+        <td>鮪</td>
+        <td>鮭</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 211</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿃</button>
+<dialog>
+    <h2>⿃</h2>
+    <table>
+    <tr>
+        <td>島</td>
+        <td>鳩</td>
+        <td>鶏</td>
+        <td>鳴</td>
+        <td>鴨</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 212</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿄</button>
+<dialog>
+    <h2>⿄</h2>
+    <table>
+    <tr>
+        <td>鹹</td>
+        <td>鹶</td>
+        <td>齟</td>
+        <td>鹸</td>
+        <td>鹹</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 213</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿇</button>
+<dialog>
+    <h2>⿇</h2>
+    <table>
+    <tr>
+        <td>磨</td>
+        <td>魔</td>
+        <td>摩</td>
+        <td>靡</td>
+        <td>麼</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 214</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻩</button>
+<dialog>
+    <h2>⻩, ⿈</h2>
+    <table>
+    <tr>
+        <td>黅</td>
+        <td>黆</td>
+        <td>黈</td>
+        <td>黇</td>
+        <td>黋</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 215</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">黒</button>
+<dialog>
+    <h2>黒, ⿊</h2>
+    <table>
+    <tr>
+        <td>黙</td>
+        <td>黜</td>
+        <td>黯</td>
+        <td>黝</td>
+        <td>墨</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 216</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⻲</button>
+<dialog>
+    <h2>⻲</h2>
+    <table>
+    <tr>
+        <td>穐</td>
+        <td>縄</td>
+        <td>蝿</td>
+        <td>竃</td>
+        <td></td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 217</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+</section>
+
+
+<hr>
+<section id="12-17">
+
+<div> 
+    <button class="stroke">12-17</button>
+    </div>
+
+<div> 
+<button type="button" class="open">⿉</button>
+<dialog>
+    <h2>⿉</h2>
+    <table>
+    <tr>
+        <td>黎</td>
+        <td>黏</td>
+        <td>黐</td>
+        <td>藜</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 218</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿋</button>
+<dialog>
+    <h2>⿋</h2>
+    <table>
+    <tr>
+        <td>黻</td>
+        <td>黼</td>    
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 219</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">歯</button>
+<dialog>
+    <h2>歯, ⿒</h2>
+    <table>
+    <tr>
+        <td>齔</td>
+        <td>齟</td>
+        <td>齠</td>
+        <td>齣</td>
+        <td>齦</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 220</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿌</button>
+<dialog>
+    <h2>⿌</h2>
+    <table>
+    <tr>
+        <td>繩</td>
+        <td>黿</td>
+        <td>蠅</td>
+        <td>僶</td>
+        <td>澠</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 221</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿏</button>
+<dialog>
+    <h2>⿏</h2>
+    <table>
+    <tr>
+        <td>竄</td>
+        <td>鼬</td>
+        <td>鼯</td>
+        <td>鼩</td>
+        <td>鼱</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 222</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">鼻</button>
+<dialog>
+    <h2>鼻</h2>
+    <table>
+    <tr>
+        <td>劓</td>
+        <td>嚊</td>
+        <td>嬶</td>
+        <td>擤</td>
+        <td>鼼</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 223</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+
+<div> 
+<button type="button" class="open">⿕</button>
+<dialog>
+    <h2>⿕</h2>
+    <table>
+    <tr>
+        <td>鑰</td>
+        <td>瀹</td>
+        <td>爚</td>
+        <td>禴</td>
+        <td>龡</td>
+    </tr>
+    </table>
+    <form method="dialog">
+        <div>№ 224</div>
+        <button>Жабу</button>
+    </form>
+</dialog>
+</div>
+</section>
+
+
+
+
+</main>
+
+<hr>
+
+<footer>  
+    <a href="read.html">&Larr;</a>
+    <a href="../index.html">&#8962;</a>        
+    <a href="dictionary_1.html">&Rarr;</a>  
+</footer>
+
+</body>
+
+
+<!-- 
+
+<h2></h2>
+    <h3></h3>
+    <table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+    <div>№</div>
+
+
+ел 国
+халық 民
+ұлт 邦
+тайпа 族
+ру 氏
+мемлекет 國
+國
+国
+邦
+族
+民 
+氏
+鋃 ornek
+璋
+飾 naqishtau
+装 bezen
+ashekeyleu
+-->
+</html>
