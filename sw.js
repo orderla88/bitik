@@ -1,5 +1,6 @@
 // Version your cache to force updates when you change files
-const CACHE_NAME = 'static-cache-v11';
+const APP_CACHE = 'app-cache-v2';
+const ASSET_CACHE = 'asset-cache';
 
 // Precache explicit files (from your list)
 const NETWORK_FIRST_URLS = [
@@ -21,7 +22,7 @@ const NETWORK_FIRST_URLS = [
   './CSS/styles.css',
   './CSS/index.css',
   './CSS/read.css',
-   './CSS/dictionary.css',
+  './CSS/dictionary.css',
   './CSS/radicals.css',
 ];
   const CACHE_FIRST_URLS = [
@@ -137,95 +138,108 @@ const NETWORK_FIRST_URLS = [
   './PDF/Yertegi/tulki_men_qarga.pdf',
 
   './PDF/Turli/tanbalar_kestesi.pdf',
-  './PDF/Turli/similarities_of_jp_kz_v2.pdf',
-  './PDF/Turli/jazular_jayli_v2.pdf',
-  './PDF/hansha_v2.pdf',
+  './PDF/Turli/similarities_of_jp_kz.pdf',
+  './PDF/Turli/jazular_jayli.pdf',
+  './PDF/hansha.pdf',
 ];
-const NETWORK_FIRST_FOLDERS = ['/HTML/', '/CSS/'];
-const CACHE_FIRST_FOLDERS = ['/Assets/', '/PDF/'];
-const PRECACHE_URLS = [...NETWORK_FIRST_URLS, ...CACHE_FIRST_URLS];
 
 
+// install event
 self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(async cache => {
-      const existingKeys = await cache.keys();
-      if (existingKeys.length === 0) {
-        // First install → precache everything, but tolerate failures
-        return Promise.allSettled(
-          PRECACHE_URLS.map(url =>
-            cache.add(url)
-          )
-        ).then(results => {
-          results.forEach((result, i) => {
-            if (result.status === 'rejected') {
-              console.error('Failed to cache:', PRECACHE_URLS[i], result.reason);
-              // Continue caching other files
-            }
-          });
-        });
+  event.waitUntil((async () => {
+    console.log('SW install');
+    // Refresh app shell every version
+    const appCache = await caches.open(APP_CACHE);
+    const appResults = await Promise.allSettled(
+      NETWORK_FIRST_URLS.map(url => appCache.add(url))
+    );
+    appResults.forEach((result, i) => {
+      if (result.status === 'rejected') {
+        console.error('APP failed:', NETWORK_FIRST_URLS[i], result.reason);
       }
-      // Otherwise, skip re‑caching
-    })
-  );
+    });
+    // Cache assets only first time
+    const assetCache = await caches.open(ASSET_CACHE);
+    const existingAssets = await assetCache.keys();
+    if (existingAssets.length === 0) {
+      console.log('First install: caching assets');
+      const assetResults = await Promise.allSettled(
+        CACHE_FIRST_URLS.map(url =>assetCache.add(url))
+      );
+      assetResults.forEach((result, i) => {
+        if (result.status === 'rejected') {
+          console.error('ASSET failed:', CACHE_FIRST_URLS[i], result.reason);
+        }
+      });
+    } else {console.log('Asset cache entries:', existingAssets.length);}
+  })());
 });
 
-
+// Delete old cache
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
-    ).then(() => self.clients.claim())
-  );
-}); // Does this code delete CACHE_NAME or files in it? 
+  event.waitUntil(caches.keys().then(keys =>
+    Promise.all(keys.filter(key => (
+      key.startsWith('app-cache-') && 
+      key !== APP_CACHE) || 
+      key.startsWith('static-cache-')
+      )
+      .map(key => {console.log('Deleting old app cache:', key);
+        return caches.delete(key);
+      })
+    )
+  ).then(() => self.clients.claim()));
+});
 
+// fetch events
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
+  const path = new URL(event.request.url).pathname;
 
-  // Decide strategy based on path
-  const path = url.pathname;
-
+// if network-first 
   if (
-  NETWORK_FIRST_URLS.some(p => path.endsWith(p)) ||
-  NETWORK_FIRST_FOLDERS.some(folder => path.startsWith(folder))
-) {
-    // Network-first
+    NETWORK_FIRST_URLS.some(p => path.endsWith(p.substring(1)))
+  ) {
     event.respondWith(
-      fetch(event.request).then(networkResponse => {
-        if (networkResponse && networkResponse.status === 200) {
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse.clone()));
-        }
-        return networkResponse;
-      }).catch(() => caches.match(event.request))
-    );
-  } else if  (
-  CACHE_FIRST_URLS.some(p => path.endsWith(p)) ||
-  CACHE_FIRST_FOLDERS.some(folder => path.startsWith(folder))
-) {
-    // Cache-first
-event.respondWith(
-  caches.match(event.request).then(cachedResponse => {
-    const fetchPromise = fetch(event.request).then(networkResponse => {
-      if (networkResponse && networkResponse.status === 200) {
-        caches.open(CACHE_NAME).then(cache =>
-          cache.put(event.request, networkResponse.clone())
-        );
-      }
-      return networkResponse;
-    }).catch(() => cachedResponse);
+      fetch(event.request)
+        .then(networkResponse => {
+          if (networkResponse &&networkResponse.status === 200) 
+            {const clone = networkResponse.clone();
+            event.waitUntil(caches.open(APP_CACHE)
+              .then(cache =>cache.put(event.request, clone))
+            );
+          } return networkResponse;
+        })
+        .catch(() =>caches.match(event.request))
+    ); return;
+  }
+  // or cache-first
+  else if (
+    CACHE_FIRST_URLS.some(p => path.endsWith(p.substring(1)))
+  ) {
+    event.respondWith(
+      caches.open(ASSET_CACHE)
+        .then(async cache => {const cached = await cache.match(event.request);
+          if (cached) return cached;
+          try {
+            const networkResponse = await fetch(event.request);
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request,networkResponse.clone());
+            }
+            return networkResponse;
+          } catch {return cached;}
+        })
+    );return;
+  }
 
-    // Return cached immediately, update in background
-    return cachedResponse || fetchPromise;
-  })
-);
-  } else {
+  else {
     // Default fallback: network-first
     console.warn('Unhandled request:', path);
     event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
   }
 });
+
+
 
 
 
