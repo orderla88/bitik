@@ -144,6 +144,11 @@ form button {
     border: solid #013 thin;
     color: #013; 
 }
+form button:active {
+    color: #720000;
+    transform: scale(0.90);
+}
+
 form div {
     padding: 0.3rem 0.5rem;
     border: solid #013 thin;

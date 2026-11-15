@@ -98,6 +98,15 @@ const NETWORK_FIRST_URLS = [
   './Assets/Images/Qashau/RSSF.jpg',
   './Assets/Images/Qashau/RSSC.jpg',
   './Assets/Images/Qashau/tools_1.jpg',
+  './Assets/Images/Qashau/BS_1.jpg',  
+  './Assets/Images/Qashau/BS_2.jpg',
+  './Assets/Images/Qashau/BS_3.jpg',
+  './Assets/Images/Qashau/BS_4.jpg',
+  './Assets/Images/Qashau/BS_5.jpg',  
+  './Assets/Images/Qashau/BS_6.jpg',
+  './Assets/Images/Qashau/BS_7.jpg',
+  './Assets/Images/Qashau/BS_8.jpg',
+
 
   // PDF files
   './PDF/Atasozi/adam_kisi.pdf',
@@ -142,7 +151,6 @@ const NETWORK_FIRST_URLS = [
   './PDF/Turli/jazular_jayli.pdf',
   './PDF/hansha.pdf',
 ];
-
 
 // install event
 self.addEventListener('install', event => {
